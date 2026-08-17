@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'com.assignment'
+version = '2.0.0-virtual-thread'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+application {
+    mainClass = 'com.assignment.cafe.CafeOrderApplication'
+
+    /*
+     * 작은 콘솔 프로그램이라 큰 메모리가 필요하지 않습니다.
+     * 일부러 최대 힙을 작게 잡아도 동작하도록 설정해,
+     * "필요한 만큼만 메모리를 쓰는 프로그램"이라는 방향을 보여줍니다.
+     */
+    applicationDefaultJvmArgs = [
+            '-Xms32m',
+            '-Xmx128m',
+            '-XX:+UseStringDeduplication'
+    ]
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+tasks.named('run') {
+    standardInput = System.in
+}
