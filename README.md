@@ -4,6 +4,30 @@ This repository collects my AI backend and Java architecture learning projects.
 
 My focus is on building backend systems that connect real-world workflows, AI-assisted development, Java concurrency, and practical user feedback loops.
 
+## Featured Insight: AI-Assisted Development Lessons
+
+The most valuable output of this repository is not only the Java code.
+
+It is the development lesson I learned while using AI as a coding partner:
+
+> AI-assisted development is an iterative process of designing ontology, generating with AI, correcting through real-world feedback, and synchronizing fragmented artifacts into one coherent product.
+
+I documented this process as a practical playbook:
+
+[`AI-Assisted Development Playbook`](AI_ASSISTED_DEVELOPMENT_PLAYBOOK.md)
+
+Core model:
+
+```text
+1. Ontology design
+2. AI-assisted generation
+3. Real-world ontology feedback
+4. Refinement
+5. Synchronization and integration
+```
+
+This is especially important for AI agent systems because technical correctness alone is not enough. The system must also reflect real workflows, visible user feedback, state transitions, and documentation consistency.
+
 ## Featured Project
 
 ### Java 21 Virtual Thread Cafe Order System
@@ -43,7 +67,7 @@ The console project itself is intentionally small, so the speed difference is no
 
 ## Development Philosophy
 
-This repository also documents an AI-assisted development process:
+This repository documents an AI-assisted development process:
 
 ```text
 1. Ontology design

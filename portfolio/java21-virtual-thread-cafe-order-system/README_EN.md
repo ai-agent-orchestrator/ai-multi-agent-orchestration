@@ -8,6 +8,38 @@ It is intentionally small and beginner-friendly, but it demonstrates an importan
 
 ---
 
+## Highlight: AI Development Lessons
+
+The key portfolio value of this project is not only Java 21 Virtual Threads.
+
+It also documents a practical AI-assisted development process:
+
+```text
+1. Ontology design
+2. AI-assisted generation
+3. Real-world ontology feedback
+4. Refinement
+5. Synchronization and integration
+```
+
+Full document:
+
+[`AI_DEVELOPMENT_LESSONS_EN.md`](AI_DEVELOPMENT_LESSONS_EN.md)
+
+In this project, AI generated the first working structure, but real execution revealed important product details:
+
+- payment completion needed visible confirmation
+- sales reflection needed to be shown immediately
+- canceled orders needed to be excluded from sales
+- menu labels had to match actual behavior
+- documentation and flowcharts had to be synchronized after code changes
+
+This is the most important lesson:
+
+> AI-generated code should be treated as a fast draft. Real software quality comes from execution, feedback, ontology correction, and integration.
+
+---
+
 ## Project Purpose
 
 The base assignment focuses on core Java concepts:
