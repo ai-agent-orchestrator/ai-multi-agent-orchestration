@@ -3,10 +3,11 @@
 ## Core Positioning
 
 ```text
-Domain problem structuring
+Medical background
++ legal hands-on experience
++ ontology-driven domain problem structuring
 + AI-assisted implementation
 + Java 21 concurrent backend architecture
-+ ontology feedback loops
 = AI-native multi-agent orchestration PM
 ```
 
