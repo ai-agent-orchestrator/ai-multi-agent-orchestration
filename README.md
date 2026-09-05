@@ -6,9 +6,10 @@
 Medical background
 + legal hands-on experience
 + ontology-driven domain problem structuring
-+ AI-assisted implementation
++ Gemini / Codex / Claude role-based orchestration
++ open-source agent framework integration
 + Java 21 concurrent backend architecture
-= AI-native multi-agent orchestration PM
+= personal multi-agent AI orchestration PM
 ```
 
 This repository is not just a collection of coding exercises.
@@ -17,7 +18,9 @@ It is a portfolio of how I learn, design, and orchestrate AI-backed systems: tur
 
 My target role is not a narrow code-only position. I am building toward an AI-native Technical PM / backend orchestration role that can connect domain context, APIs, agents, documentation, and engineering execution.
 
-My focus is on building backend systems that connect real-world workflows, AI-assisted development, Java concurrency, and practical user feedback loops.
+My current workflow separates AI roles by strength: Gemini for legal and medical domain framing, Codex for backend implementation and repository execution, and Claude for architecture review and explanation.
+
+The goal is to evolve this manual workflow into my own personal multi-agent AI system by combining frontier models with open-source agent frameworks and backend infrastructure.
 
 ## Why This Repository Exists
 
