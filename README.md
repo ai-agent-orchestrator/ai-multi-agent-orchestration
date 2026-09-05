@@ -1,8 +1,64 @@
 # AI Multi-Agent Orchestration Portfolio
 
-This repository collects my AI backend and Java architecture learning projects.
+## Core Positioning
+
+```text
+Domain problem structuring
++ AI-assisted implementation
++ Java 21 concurrent backend architecture
++ ontology feedback loops
+= AI-native multi-agent orchestration PM
+```
+
+This repository is not just a collection of coding exercises.
+
+It is a portfolio of how I learn, design, and orchestrate AI-backed systems: turning messy domain problems into structured workflows, executable backend prototypes, feedback loops, and reusable architectural knowledge.
+
+My target role is not a narrow code-only position. I am building toward an AI-native Technical PM / backend orchestration role that can connect domain context, APIs, agents, documentation, and engineering execution.
 
 My focus is on building backend systems that connect real-world workflows, AI-assisted development, Java concurrency, and practical user feedback loops.
+
+## Why This Repository Exists
+
+AI products are not built by one model call.
+
+Real systems need orchestration:
+
+- user request flow
+- API contracts
+- service boundaries
+- agent roles
+- tool execution
+- error handling
+- observability
+- feedback from real usage
+- documentation that stays aligned with the product
+
+This repository records that practice.
+
+The main question is:
+
+```text
+How do I turn fragmented AI-generated outputs into one coherent, testable, explainable system?
+```
+
+## Architecture Map
+
+```mermaid
+flowchart LR
+    A["Domain Problem"] --> B["Ontology / Workflow Map"]
+    B --> C["REST API Contract"]
+    C --> D["Service Layer"]
+    D --> E["Agent / Tool Orchestration"]
+    E --> F["LLM / External API / Data Source"]
+    F --> G["Structured Response"]
+    G --> H["User Feedback"]
+    H --> B
+```
+
+This repository is the engineering side of my ontology-driven AI direction.
+
+The related ontology work focuses on how to structure complex domain knowledge. This repository focuses on how that structure can become backend code, agent flow, concurrency design, and product behavior.
 
 ## Featured Insight: AI-Assisted Development Lessons
 
@@ -91,7 +147,7 @@ It must be executed, observed, corrected through real user feedback, and synchro
 
 ## Current Direction
 
-I am especially interested in backend engineering for AI agent systems, including:
+I am especially interested in backend orchestration for AI agent systems, including:
 
 - Java and Spring-based AI services
 - multi-agent orchestration
@@ -99,3 +155,5 @@ I am especially interested in backend engineering for AI agent systems, includin
 - domain ontology modeling
 - real-world feedback loops
 - legal, medical, administrative, and other knowledge-heavy domains
+
+The long-term direction is to connect this orchestration practice with Legal/Medical AI systems, safe RAG architecture, guardrails, API contracts, observability, and Java 21 Virtual Threads for waiting-heavy AI workloads.
