@@ -7,7 +7,7 @@ Medical background
 + legal hands-on experience
 + ontology-driven domain structuring
 + Gemini / Codex / Claude orchestration
-+ Java 21 / Spring Boot AI backend
++ Java 21 + Spring Boot + Python AI servers
 + NVIDIA NeMo Guardrails
 = Legal/Medical multi-agent AI PM
 ```
@@ -20,7 +20,7 @@ My target role is not a narrow code-only position. I am building toward an AI-na
 
 My current workflow separates AI roles by strength: Gemini for legal and medical domain framing, Codex for backend implementation and repository execution, and Claude for architecture review and explanation.
 
-The goal is to evolve this manual workflow into my own personal multi-agent AI system by combining frontier models with open-source agent frameworks and backend infrastructure.
+The goal is to evolve this manual workflow into my own personal multi-agent AI system by combining frontier models, open-source agent frameworks, Spring Boot backends, Python AI servers, and guardrails.
 
 ## Why This Repository Exists
 
