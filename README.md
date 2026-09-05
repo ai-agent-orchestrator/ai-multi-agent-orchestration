@@ -5,11 +5,11 @@
 ```text
 Medical background
 + legal hands-on experience
-+ ontology-driven domain problem structuring
-+ Gemini / Codex / Claude role-based orchestration
-+ open-source agent framework integration
-+ Java 21 concurrent backend architecture
-= personal multi-agent AI orchestration PM
++ ontology-driven domain structuring
++ Gemini / Codex / Claude orchestration
++ Java 21 / Spring Boot AI backend
++ NVIDIA NeMo Guardrails
+= Legal/Medical multi-agent AI PM
 ```
 
 This repository is not just a collection of coding exercises.
