@@ -1,5 +1,7 @@
 # AI Multi-Agent Orchestration Portfolio
 
+I am building my own personal multi-agent AI system by combining Gemini, Codex, Claude, open-source agent frameworks, Spring Boot, Python AI servers, and guardrails.
+
 ## Core Positioning
 
 ```text
