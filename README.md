@@ -60,6 +60,52 @@ This repository is the engineering side of my ontology-driven AI direction.
 
 The related ontology work focuses on how to structure complex domain knowledge. This repository focuses on how that structure can become backend code, agent flow, concurrency design, and product behavior.
 
+## Personal Multi-Agent Direction
+
+My current AI workflow is already multi-agent in practice.
+
+```text
+Gemini
+-> domain reasoning
+-> legal / medical issue exploration
+-> broad conceptual comparison
+
+Codex
+-> backend implementation
+-> repository work
+-> Java / Spring / API structure
+-> documentation synchronization
+
+Claude
+-> backend reasoning
+-> architecture review
+-> long-form explanation
+-> refinement
+```
+
+The next goal is to turn this manual AI workflow into a personal optimized multi-agent orchestration pattern.
+
+```text
+Domain question
+-> Gemini for legal / medical domain framing
+-> Codex for implementation and repository execution
+-> Claude for architectural review and explanation
+-> ontology feedback
+-> improved system design
+```
+
+This connects directly to my ontology positioning:
+
+```text
+Medical background
++ Legal dispute structuring experience
++ Ontology-driven thinking
++ AI-native PM / backend orchestration
+= Legal/Medical AI Technical PM
+```
+
+The practical goal is to build a personal AI collaboration system where each AI model has a clear role, the outputs are checked against real domain structure, and the final result becomes code, documentation, diagrams, and reusable architectural knowledge.
+
 ## Featured Insight: AI-Assisted Development Lessons
 
 The most valuable output of this repository is not only the Java code.
