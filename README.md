@@ -42,6 +42,40 @@ The main question is:
 How do I turn fragmented AI-generated outputs into one coherent, testable, explainable system?
 ```
 
+## Market Context
+
+AI agent systems are becoming a practical software architecture category.
+
+The important question is no longer only "which model is the smartest?" The more important product and engineering questions are:
+
+- how multiple models and tools are connected
+- how agent roles are separated
+- how requests, errors, and state transitions are controlled
+- how outputs are reviewed and traced
+- how domain knowledge is structured before it reaches the model
+- how the system stays observable, reliable, and safe
+
+This is why agent orchestration, safe RAG, guardrails, API contracts, evals, and observability are becoming important parts of the AI application stack.
+
+I am preparing for this market by focusing on the intersection of:
+
+```text
+Legal / Medical domain knowledge
++ ontology-driven problem structuring
++ backend AI server architecture
++ multi-agent orchestration
++ safe and observable AI workflows
+```
+
+At the current stage, I am especially focused on the Legal/Medical part because these domains have complex documents, high-risk reasoning, evidence structure, procedural workflows, and strong demand for safer AI systems.
+
+My backend study is the execution layer for that direction: Java 21, Spring Boot REST APIs, JSON contracts, Virtual Threads, monitoring, observability, and later FastAPI/RAG/guardrail integration.
+
+Reference signals I am tracking:
+
+- [LangChain State of Agent Engineering](https://www.langchain.com/state-of-agent-engineering)
+- [Open Source AI Agent Frameworks Comparison 2026](https://alicelabs.ai/en/insights/open-source-ai-agent-frameworks-comparison-2026)
+
 ## Architecture Map
 
 ```mermaid
