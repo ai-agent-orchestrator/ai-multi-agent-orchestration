@@ -5,6 +5,14 @@ I am building my own personal multi-agent AI system by combining Gemini, Codex, 
 ## Core Positioning
 
 ```text
+Domain-driven AI Technical PM
+for healthcare, legal, cybersecurity, and AI governance
+```
+
+I combine healthcare and legal domain experience with hands-on AI backend practice.
+My focus is building safe, observable, and compliant AI systems for high-stakes domains.
+
+```text
 Medical background
 + legal hands-on experience
 + ontology-driven domain structuring
