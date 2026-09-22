@@ -233,6 +233,7 @@ It must be executed, observed, corrected through real user feedback, and synchro
 
 ## Main Documents
 
+- [AI Ecosystem Stack Watch](AI_ECOSYSTEM_STACK_WATCH.md)
 - [Java 21 Virtual Thread Cafe Order System](portfolio/java21-virtual-thread-cafe-order-system)
 - [English README](portfolio/java21-virtual-thread-cafe-order-system/README_EN.md)
 - [AI Development Lessons](portfolio/java21-virtual-thread-cafe-order-system/AI_DEVELOPMENT_LESSONS_EN.md)
