@@ -15,9 +15,11 @@ AI-assisted code review
 enterprise backend automation
 ```
 
-My current AI workflow is already multi-agent in practice:
+## Personal Multi-Agent Direction
 
-```diff
+My current AI workflow is already multi-agent in practice.
+
+```text
 Gemini
 -> domain reasoning
 -> legal / medical issue exploration
@@ -47,6 +49,17 @@ Alibaba open-code-review
 -> enterprise backend automation
 ```
 
+The next goal is to turn this manual AI workflow into a personal optimized multi-agent orchestration pattern.
+
+```text
+Domain question
+-> Gemini for legal / medical domain framing
+-> Codex for implementation and repository execution
+-> Claude for architectural review and explanation
+-> ontology feedback
+-> improved system design
+```
+
 This connects directly to my ontology positioning:
 
 ```text
@@ -64,11 +77,35 @@ Related ontology direction:
 - [Ontology Feedback: legal / medical AI positioning](https://github.com/ai-agent-orchestrator/ontology-feedback)
 - [`AI_ECOSYSTEM_STACK_WATCH.md`](AI_ECOSYSTEM_STACK_WATCH.md)
 
+## Featured Insight: AI-Assisted Development Lessons
+
+The most valuable output of this repository is not only the code.
+
+It is the development lesson I learned by actually using AI as a coding partner:
+
+```text
+AI-assisted development is an iterative process of designing ontology,
+generating with AI, testing through real implementation,
+correcting through feedback, and synchronizing fragmented artifacts
+into one coherent product.
+```
+
+Core lesson:
+
+```text
+1. Ontology design
+2. AI-assisted generation
+3. Real implementation
+4. Testing and observation
+5. Documentation synchronization
+6. Reusable architecture knowledge
+```
+
 ## Market Focus
 
 I am preparing for this market by focusing on the intersection of:
 
-```diff
+```text
 Legal / Medical domain knowledge
 + ontology-driven problem structuring
 + backend AI server architecture
