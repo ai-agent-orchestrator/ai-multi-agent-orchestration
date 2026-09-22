@@ -1,57 +1,53 @@
 # AI Multi-Agent Orchestration Portfolio
 
-I am building my own personal multi-agent AI system by combining Gemini, Codex, Claude, open-source agent frameworks, Spring Boot, Python AI servers, and guardrails.
+My current AI workflow is already multi-agent in practice.
 
-## AI Ecosystem Stack Watch
+```diff
+Gemini
+-> domain reasoning
+-> legal / medical issue exploration
+-> broad conceptual comparison
 
-I am tracking a small, focused AI engineering stack rather than trying to follow every tool.
+Codex
+-> backend implementation
+-> repository work
+-> Java / Spring / API structure
+-> documentation synchronization
 
-```text
-Western stack:
-Codex / Claude / NVIDIA Guardrails / LangChain
+Claude
+-> backend reasoning
+-> architecture review
+-> long-form explanation
+-> refinement
 
-China stack:
+NVIDIA NeMo Guardrails
+-> AI security
+-> policy boundary
+-> guardrail logic
+-> safe agent behavior
+
 Alibaba open-code-review
-
-Purpose:
-cost-efficient AI engineering
-AI-assisted code review
-enterprise backend automation
+-> cost-cutting reference
+-> AI-assisted code review
+-> enterprise backend automation
 ```
 
-Detailed note:
-
-[`AI_ECOSYSTEM_STACK_WATCH.md`](AI_ECOSYSTEM_STACK_WATCH.md)
-
-## Core Positioning
-
-```text
-Domain-driven AI Technical PM
-for healthcare, legal, cybersecurity, and AI governance
-```
-
-I combine healthcare and legal domain experience with hands-on AI backend practice.
-My focus is building safe, observable, and compliant AI systems for high-stakes domains.
+This connects directly to my ontology positioning:
 
 ```text
 Medical background
-+ legal hands-on experience
-+ ontology-driven domain structuring
-+ Gemini / Codex / Claude orchestration
-+ Java 21 + Spring Boot + Python AI servers
-+ NVIDIA NeMo Guardrails
-= Legal/Medical multi-agent AI PM
++ Legal dispute structuring experience
++ Ontology-driven thinking
++ AI-native PM / backend orchestration
+= Legal/Medical AI Technical PM
 ```
 
-This repository is not just a collection of coding exercises.
+The practical goal is to build a personal AI collaboration system where each AI model has a clear role, the outputs are checked against real domain structure, and the final result becomes code, documentation, diagrams, and reusable architectural knowledge.
 
-It is a portfolio of how I learn, design, and orchestrate AI-backed systems: turning messy domain problems into structured workflows, executable backend prototypes, feedback loops, and reusable architectural knowledge.
+Related ontology direction:
 
-My target role is not a narrow code-only position. I am building toward an AI-native Technical PM / backend orchestration role that can connect domain context, APIs, agents, documentation, and engineering execution.
-
-My current workflow separates AI roles by strength: Gemini for legal and medical domain framing, Codex for backend implementation and repository execution, and Claude for architecture review and explanation.
-
-The goal is to evolve this manual workflow into my own personal multi-agent AI system by combining frontier models, open-source agent frameworks, Spring Boot backends, Python AI servers, and guardrails.
+- [Ontology Feedback: legal / medical AI positioning](https://github.com/ai-agent-orchestrator/ontology-feedback)
+- [`AI_ECOSYSTEM_STACK_WATCH.md`](AI_ECOSYSTEM_STACK_WATCH.md)
 
 ## Why This Repository Exists
 
