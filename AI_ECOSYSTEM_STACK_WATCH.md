@@ -4,8 +4,8 @@ My current AI workflow is already multi-agent in practice.
 
 ## Western Stack
 
-```diff
-Gemini
+```text
+Gemini (Google AI)
 -> domain reasoning
 -> legal / medical issue exploration
 -> broad conceptual comparison
@@ -37,7 +37,7 @@ LangChain / LangGraph / LangSmith
 
 ## China Stack
 
-```diff
+```text
 Alibaba open-code-review
 -> cost-cutting reference
 -> AI-assisted code review

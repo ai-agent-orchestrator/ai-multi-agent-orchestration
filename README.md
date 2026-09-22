@@ -4,7 +4,7 @@ I am building my own multi-agent AI workflow for backend orchestration, guardrai
 
 ```text
 Western stack:
-Codex / Claude / NVIDIA Guardrails / LangChain
+Gemini (Google AI) / Codex / Claude / NVIDIA Guardrails / LangChain
 
 China stack:
 Alibaba open-code-review
