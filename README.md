@@ -2,6 +2,27 @@
 
 I am building my own personal multi-agent AI system by combining Gemini, Codex, Claude, open-source agent frameworks, Spring Boot, Python AI servers, and guardrails.
 
+## AI Ecosystem Stack Watch
+
+I am tracking a small, focused AI engineering stack rather than trying to follow every tool.
+
+```text
+Western stack:
+Codex / Claude / NVIDIA Guardrails / LangChain
+
+China stack:
+Alibaba open-code-review
+
+Purpose:
+cost-efficient AI engineering
+AI-assisted code review
+enterprise backend automation
+```
+
+Detailed note:
+
+[`AI_ECOSYSTEM_STACK_WATCH.md`](AI_ECOSYSTEM_STACK_WATCH.md)
+
 ## Core Positioning
 
 ```text
