@@ -1,6 +1,21 @@
 # AI Multi-Agent Orchestration Portfolio
 
-My current AI workflow is already multi-agent in practice.
+I am building my own multi-agent AI workflow for backend orchestration, guardrail-ready AI systems, and domain-driven legal / medical AI products.
+
+```text
+Western stack:
+Codex / Claude / NVIDIA Guardrails / LangChain
+
+China stack:
+Alibaba open-code-review
+
+Purpose:
+cost-efficient AI engineering
+AI-assisted code review
+enterprise backend automation
+```
+
+My current AI workflow is already multi-agent in practice:
 
 ```diff
 Gemini
