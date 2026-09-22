@@ -121,3 +121,28 @@ Reference signals I am tracking:
 
 - [LangChain State of Agent Engineering](https://www.langchain.com/state-of-agent-engineering)
 - [Open Source AI Agent Frameworks Comparison 2026](https://alicelabs.ai/en/insights/open-source-ai-agent-frameworks-comparison-2026)
+
+## Implementation Stack
+
+Core backend / AI engineering stack:
+
+```text
+Java 21 Virtual Threads
+Spring Boot
+Python / FastAPI
+NVIDIA NeMo Guardrails
+LangChain / LangGraph / LangSmith
+Prometheus / observability metrics
+JPA / SQL history tracking
+React API integration
+```
+
+Practical focus:
+
+```text
+AI backend orchestration
+guardrail-ready agent behavior
+observable risk metrics
+domain ontology structure
+legal / medical AI workflow design
+```
