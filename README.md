@@ -99,6 +99,21 @@ Reference note:
 
 - [`WEBSOCKET_PHASE_3_2_REFERENCE.md`](WEBSOCKET_PHASE_3_2_REFERENCE.md)
 
+Postman study focus:
+
+```text
+1. Connect to WebSocket endpoint
+2. Send auth message with JWT
+3. Confirm auth_ok response
+4. Send draft request
+5. Observe streaming delta messages
+6. Send cancel while generation is running
+7. Send revise after a draft is completed
+8. Check session state behavior
+9. Understand why a separate worker thread is needed
+10. Understand why concurrent WebSocket send protection is needed
+```
+
 ## Featured Insight: AI-Assisted Development Lessons
 
 The most valuable output of this repository is not only the code.
