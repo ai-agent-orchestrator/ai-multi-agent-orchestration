@@ -1,0 +1,59 @@
+.field {
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+    height: 48px;
+    padding: 0 var(--space-16);
+    border: 1px solid var(--line-normal);
+    border-radius: var(--radius-lg);
+    background: var(--background-elevated);
+}
+
+.field:focus-within {
+    border-color: var(--primary-normal);
+}
+
+.icon {
+    flex-shrink: 0;
+    color: var(--label-neutral);
+}
+
+.input {
+    flex-grow: 1;
+    min-width: 0;
+    height: 46px;
+    border: 0;
+    outline: none;
+    background: transparent;
+}
+
+.input::placeholder {
+    color: var(--label-assistive);
+}
+
+/* 브라우저가 붙이는 기본 x 버튼. 우리 버튼과 겹치므로 숨긴다. */
+.input::-webkit-search-cancel-button {
+    display: none;
+}
+
+.clear {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    border: 0;
+    border-radius: var(--radius-full);
+    background: var(--fill-strong);
+    color: var(--label-normal);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.srOnly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}

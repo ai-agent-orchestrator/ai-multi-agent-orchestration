@@ -1,0 +1,53 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '4.1.1'
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.ohgiraffers'
+version = '0.0.1-SNAPSHOT'
+description = 'ohgi-restaurant'
+
+java {
+    toolchain {
+        /* 설명. [Phase 3] Java 21 로 올린다. 이유는 application.yaml 의 가상 스레드(spring.threads.virtual) 설명 참고 */
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-webmvc'
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:3.1.0'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    /* 설명. [Phase 2] Spring Security. 이 한 줄을 넣는 순간 모든 요청이 인증을 요구하게 바뀐다. */
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    /* 설명. [Phase 2] JWT 토큰을 만들고 검증하기 위한 JJWT 라이브러리 (base64-key-generator 와 같은 버전)
+     *  Spring Boot 가 버전을 관리하지 않는 라이브러리라 버전을 직접 적는다.
+     * */
+    implementation 'io.jsonwebtoken:jjwt-api:0.13.0'
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.13.0'
+    runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.13.0'
+
+    /* 설명. [Phase 3-2] WebSocket. 관리자 화면과 서버가 연결 하나를 열어 두고 서로 아무 때나 메시지를 보낸다. */
+    implementation 'org.springframework.boot:spring-boot-starter-websocket'
+
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    runtimeOnly 'com.mysql:mysql-connector-j'
+    testImplementation 'org.springframework.boot:spring-boot-starter-actuator-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-data-jpa-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-security-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}

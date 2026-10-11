@@ -77,6 +77,28 @@ Related ontology direction:
 - [Ontology Feedback: legal / medical AI positioning](https://github.com/ai-agent-orchestrator/ontology-feedback)
 - [`AI_ECOSYSTEM_STACK_WATCH.md`](AI_ECOSYSTEM_STACK_WATCH.md)
 
+## WebSocket Agent Control Reference
+
+This repository also keeps a WebSocket reference branch for future agent-control study.
+
+```text
+Phase 3-2 WebSocket
+-> auth / draft / cancel / revise
+-> session state
+-> real-time AI task control
+-> future LangChain / LangGraph orchestration layer
+```
+
+Reference branch:
+
+```text
+feature/websocket-phase-3-2-reference
+```
+
+Reference note:
+
+- [`WEBSOCKET_PHASE_3_2_REFERENCE.md`](WEBSOCKET_PHASE_3_2_REFERENCE.md)
+
 ## Featured Insight: AI-Assisted Development Lessons
 
 The most valuable output of this repository is not only the code.

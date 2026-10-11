@@ -1,0 +1,90 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-24);
+}
+
+.head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: var(--space-16);
+}
+
+.summary {
+    color: var(--label-neutral);
+    margin-top: var(--space-4);
+}
+
+/* 좁은 화면에서는 표를 가로로 스크롤한다. */
+.tableWrap {
+    overflow-x: auto;
+    background: var(--background-elevated);
+    border: 1px solid var(--line-solid-normal);
+    border-radius: var(--radius-lg);
+}
+
+.table {
+    width: 100%;
+    min-width: 720px;
+    border-collapse: collapse;
+}
+
+.table th {
+    text-align: left;
+    padding: var(--space-12) var(--space-16);
+    color: var(--label-alternative);
+    border-bottom: 1px solid var(--line-neutral);
+}
+
+.table td {
+    padding: var(--space-10) var(--space-16);
+    border-bottom: 1px solid var(--line-neutral);
+    vertical-align: middle;
+}
+
+.table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.thumb {
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+}
+
+.name:hover {
+    color: var(--primary-normal);
+}
+
+.status {
+    padding: var(--space-2) var(--space-8);
+    border-radius: var(--radius-chip);
+}
+
+.on {
+    background: var(--background-status-positive);
+    color: var(--status-positive);
+}
+
+.off {
+    background: var(--fill-normal);
+    color: var(--label-alternative);
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-6);
+}
+
+.srOnly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}

@@ -1,0 +1,43 @@
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+}
+
+.label {
+    color: var(--label-normal);
+}
+
+.hint {
+    color: var(--label-alternative);
+}
+
+.control {
+    width: 100%;
+    min-height: 48px;
+    padding: var(--space-12) var(--space-16);
+    border: 1px solid var(--line-normal);
+    border-radius: var(--radius-lg);
+    background: var(--background-elevated);
+    outline: none;
+}
+
+.control:focus {
+    border-color: var(--primary-normal);
+}
+
+.control::placeholder {
+    color: var(--label-assistive);
+}
+
+textarea.control {
+    resize: vertical;
+}
+
+/* 서버가 돌려준 오류 메시지 */
+.error {
+    padding: var(--space-12) var(--space-16);
+    border-radius: var(--radius-md);
+    background: var(--background-status-negative);
+    color: var(--status-negative);
+}

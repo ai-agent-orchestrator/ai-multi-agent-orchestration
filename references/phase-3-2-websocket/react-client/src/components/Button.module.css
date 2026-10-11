@@ -1,0 +1,46 @@
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-6);
+    border: 0;
+    white-space: nowrap;
+}
+
+/* 28px 은 spacing 스케일에 없는 값이다. Montage 의 버튼 소스가 그렇게 쓴다. */
+.large {
+    border-radius: var(--radius-lg);
+    padding: var(--space-12) 28px;
+}
+
+.medium {
+    border-radius: var(--radius-md);
+    padding: 9px var(--space-20);
+}
+
+.small {
+    border-radius: var(--radius-sm);
+    padding: 7px var(--space-14);
+}
+
+.primary {
+    background: var(--primary-normal);
+    color: var(--static-white);
+}
+
+.primary:hover {
+    background: var(--primary-strong);
+}
+
+.primary:active {
+    background: var(--primary-heavy);
+}
+
+.secondary {
+    background: var(--fill-normal);
+    color: var(--label-normal);
+}
+
+.secondary:hover {
+    background: var(--fill-strong);
+}

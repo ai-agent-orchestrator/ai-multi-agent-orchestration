@@ -1,0 +1,40 @@
+/* 로그인 화면과 회원가입 화면이 함께 쓴다. */
+
+.page {
+    display: flex;
+    justify-content: center;
+    padding-top: var(--space-24);
+}
+
+.card {
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-16);
+    padding: var(--space-32);
+    background: var(--background-elevated);
+    border: 1px solid var(--line-solid-normal);
+    border-radius: var(--radius-lg);
+}
+
+.notice {
+    padding: var(--space-12) var(--space-16);
+    border-radius: var(--radius-md);
+    background: var(--background-status-positive);
+    color: var(--status-positive);
+}
+
+.hint {
+    color: var(--label-alternative);
+    text-align: center;
+}
+
+.switch {
+    color: var(--label-neutral);
+    text-align: center;
+}
+
+.switch a {
+    color: var(--primary-normal);
+}

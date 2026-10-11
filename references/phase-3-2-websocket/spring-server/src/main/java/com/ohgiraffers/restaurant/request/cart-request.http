@@ -1,0 +1,57 @@
+### 0. 먼저 member-request.http 의 '2. 로그인'을 실행해 {{userToken}} 을 받아둔다.
+
+### 1. 내 장바구니 조회 (토큰 필요)
+# 주소에 회원코드가 없다. 토큰의 주인(user01)의 장바구니가 나온다.
+GET http://localhost:8080/api/members/me/cart
+Authorization: Bearer {{userToken}}
+
+### 1-1. 토큰 없이 조회 (-> 401)
+GET http://localhost:8080/api/members/me/cart
+
+### 2. 장바구니 담기
+# 이미 담긴 메뉴를 다시 담으면 새 줄이 생기지 않고 수량이 더해진다.
+POST http://localhost:8080/api/members/me/cart/items
+Content-Type: application/json
+Authorization: Bearer {{userToken}}
+
+{
+  "menuCode": 1,
+  "cartAmount": 2
+}
+
+### 2-1. 담기 실패 (주문 불가 메뉴 -> 400)
+POST http://localhost:8080/api/members/me/cart/items
+Content-Type: application/json
+Authorization: Bearer {{userToken}}
+
+{
+  "menuCode": 5,
+  "cartAmount": 1
+}
+
+### 2-2. 담기 실패 (99개 초과 -> 400)
+POST http://localhost:8080/api/members/me/cart/items
+Content-Type: application/json
+Authorization: Bearer {{userToken}}
+
+{
+  "menuCode": 1,
+  "cartAmount": 99
+}
+
+### 3. 수량 변경 (더하는 것이 아니라 이 값으로 바꾼다)
+PUT http://localhost:8080/api/members/me/cart/items/1
+Content-Type: application/json
+Authorization: Bearer {{userToken}}
+
+{
+  "cartAmount": 5
+}
+
+### 4. 장바구니에서 빼기
+DELETE http://localhost:8080/api/members/me/cart/items/1
+Authorization: Bearer {{userToken}}
+
+### 5. [Phase 1 의 문제점이 막혔는지 확인] 예전 주소로 다른 회원의 장바구니 보기 (-> 404, 주소 자체가 없다)
+GET http://localhost:8080/api/members/3/cart
+Authorization: Bearer {{userToken}}

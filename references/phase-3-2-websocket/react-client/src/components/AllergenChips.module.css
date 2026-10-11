@@ -1,0 +1,19 @@
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-6);
+}
+
+.chip {
+    height: 28px;
+    padding: 0 var(--space-10);
+    border-radius: var(--radius-chip);
+    background: var(--background-status-cautionary);
+    color: var(--status-cautionary);
+    display: inline-flex;
+    align-items: center;
+}
+
+.none {
+    color: var(--label-alternative);
+}

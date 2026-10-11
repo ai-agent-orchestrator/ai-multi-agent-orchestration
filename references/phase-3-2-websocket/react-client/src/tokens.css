@@ -1,0 +1,348 @@
+/* 이 파일은 scripts/build-tokens.mjs 가 만든다. 직접 고치지 말 것. */
+/* 출처: owlohgiraffers/wanted-montage-web @ main (2026-09-17) */
+
+:root {
+  --space-0: 0px;
+  --space-0_5: 0.5px;
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-12: 12px;
+  --space-14: 14px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-40: 40px;
+  --space-48: 48px;
+  --space-56: 56px;
+  --space-64: 64px;
+  --space-72: 72px;
+  --space-80: 80px;
+  --radius-chip: 6px;
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+  --breakpoint-xs: 0px;
+  --breakpoint-sm: 768px;
+  --breakpoint-md: 992px;
+  --breakpoint-lg: 1200px;
+  --breakpoint-xl: 1600px;
+  --font-sans: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+
+  --primary-normal: #0066ff;
+  --primary-strong: #005eeb;
+  --primary-heavy: #0054d1;
+  --label-normal: #171719;
+  --label-strong: #000000;
+  --label-neutral: #2e2f33e0;
+  --label-alternative: #37383c9c;
+  --label-assistive: #37383c47;
+  --label-disable: #37383c29;
+  --background-normal: #ffffff;
+  --background-alternative: #f7f7f8;
+  --background-elevated: #ffffff;
+  --line-normal: #70737c38;
+  --line-neutral: #70737c29;
+  --line-solid-normal: #e1e2e4;
+  --line-primary-normal: #0066ff47;
+  --fill-normal: #70737c14;
+  --fill-strong: #70737c29;
+  --fill-alternative: #70737c0d;
+  --interaction-inactive: #989ba2;
+  --interaction-disable: #f4f4f5;
+  --status-positive: #00bf40;
+  --status-cautionary: #ff9200;
+  --status-negative: #ff4242;
+  --background-status-positive: #00bf4014;
+  --background-status-cautionary: #ff920014;
+  --background-status-negative: #ff424214;
+  --inverse-background: #1b1c1e;
+  --inverse-label: #f7f7f8;
+  --inverse-primary: #3385ff;
+  --material-dimmer: #17171985;
+  --static-white: #ffffff;
+  --static-black: #000000;
+  --accent-bg-redOrange: #ff5e00;
+  --accent-bg-lime: #58cf04;
+  --accent-bg-cyan: #00bdde;
+  --accent-bg-lightBlue: #00aeff;
+  --accent-bg-violet: #6541f2;
+  --accent-bg-purple: #cb59ff;
+  --accent-bg-pink: #f553da;
+  --accent-fg-red: #e52222;
+  --accent-fg-redOrange: #f55a00;
+  --accent-fg-orange: #d17600;
+  --accent-fg-lime: #429e00;
+  --accent-fg-green: #009632;
+  --accent-fg-cyan: #0098b2;
+  --accent-fg-lightBlue: #008dcf;
+  --accent-fg-blue: #005eeb;
+  --accent-fg-violet: #5b37ed;
+  --accent-fg-purple: #ad36e3;
+  --accent-fg-pink: #e846cd;
+  --shadow-xsmall: 0px 1px 2px -1px #1717171a;
+  --shadow-small: 0px 2px 4px -2px #1717170f, 0px 4px 6px -1px #1717170f;
+  --shadow-medium: 0px 4px 6px -2px #17171712, 0px 10px 15px -3px #17171712;
+  --shadow-large: 0px 6px 10px -4px #17171714, 0px 16px 24px -6px #17171714;
+  --shadow-xlarge: 0px 10px 15px -5px #1717171a, 0px 24px 38px -10px #1717171f;
+}
+
+[data-theme="dark"] {
+  --primary-normal: #3385ff;
+  --primary-strong: #1a75ff;
+  --primary-heavy: #0066ff;
+  --label-normal: #f7f7f8;
+  --label-strong: #ffffff;
+  --label-neutral: #c2c4c8e0;
+  --label-alternative: #aeb0b69c;
+  --label-assistive: #aeb0b647;
+  --label-disable: #989ba229;
+  --background-normal: #1b1c1e;
+  --background-alternative: #0f0f10;
+  --background-elevated: #212225;
+  --line-normal: #70737c52;
+  --line-neutral: #70737c47;
+  --line-solid-normal: #37383c;
+  --line-primary-normal: #3385ff47;
+  --fill-normal: #70737c38;
+  --fill-strong: #70737c47;
+  --fill-alternative: #70737c1f;
+  --interaction-inactive: #5a5c63;
+  --interaction-disable: #2e2f33;
+  --status-positive: #1ed45a;
+  --status-cautionary: #ffa938;
+  --status-negative: #ff6363;
+  --background-status-positive: #1ed45a14;
+  --background-status-cautionary: #ffa93814;
+  --background-status-negative: #ff636314;
+  --inverse-background: #ffffff;
+  --inverse-label: #171719;
+  --inverse-primary: #0066ff;
+  --material-dimmer: #171719bd;
+  --static-white: #ffffff;
+  --static-black: #000000;
+  --accent-bg-redOrange: #ff7b2e;
+  --accent-bg-lime: #6be016;
+  --accent-bg-cyan: #28d0ed;
+  --accent-bg-lightBlue: #3dc2ff;
+  --accent-bg-violet: #7d5ef7;
+  --accent-bg-purple: #d478ff;
+  --accent-bg-pink: #fa73e3;
+  --accent-fg-red: #ff6363;
+  --accent-fg-redOrange: #ff7b2e;
+  --accent-fg-orange: #ff9200;
+  --accent-fg-lime: #58cf04;
+  --accent-fg-green: #1ed45a;
+  --accent-fg-cyan: #00bdde;
+  --accent-fg-lightBlue: #00aeff;
+  --accent-fg-blue: #4f95ff;
+  --accent-fg-violet: #9e86fc;
+  --accent-fg-purple: #d478ff;
+  --accent-fg-pink: #fa73e3;
+  --shadow-xsmall: 0px 1px 2px -1px #1717171a;
+  --shadow-small: 0px 2px 4px -2px #1717170f, 0px 4px 6px -1px #1717170f;
+  --shadow-medium: 0px 4px 6px -2px #17171712, 0px 10px 15px -3px #17171712;
+  --shadow-large: 0px 6px 10px -4px #17171714, 0px 16px 24px -6px #17171714;
+  --shadow-xlarge: 0px 10px 15px -5px #1717171a, 0px 24px 38px -10px #1717171f;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --primary-normal: #3385ff;
+    --primary-strong: #1a75ff;
+    --primary-heavy: #0066ff;
+    --label-normal: #f7f7f8;
+    --label-strong: #ffffff;
+    --label-neutral: #c2c4c8e0;
+    --label-alternative: #aeb0b69c;
+    --label-assistive: #aeb0b647;
+    --label-disable: #989ba229;
+    --background-normal: #1b1c1e;
+    --background-alternative: #0f0f10;
+    --background-elevated: #212225;
+    --line-normal: #70737c52;
+    --line-neutral: #70737c47;
+    --line-solid-normal: #37383c;
+    --line-primary-normal: #3385ff47;
+    --fill-normal: #70737c38;
+    --fill-strong: #70737c47;
+    --fill-alternative: #70737c1f;
+    --interaction-inactive: #5a5c63;
+    --interaction-disable: #2e2f33;
+    --status-positive: #1ed45a;
+    --status-cautionary: #ffa938;
+    --status-negative: #ff6363;
+    --background-status-positive: #1ed45a14;
+    --background-status-cautionary: #ffa93814;
+    --background-status-negative: #ff636314;
+    --inverse-background: #ffffff;
+    --inverse-label: #171719;
+    --inverse-primary: #0066ff;
+    --material-dimmer: #171719bd;
+    --static-white: #ffffff;
+    --static-black: #000000;
+    --accent-bg-redOrange: #ff7b2e;
+    --accent-bg-lime: #6be016;
+    --accent-bg-cyan: #28d0ed;
+    --accent-bg-lightBlue: #3dc2ff;
+    --accent-bg-violet: #7d5ef7;
+    --accent-bg-purple: #d478ff;
+    --accent-bg-pink: #fa73e3;
+    --accent-fg-red: #ff6363;
+    --accent-fg-redOrange: #ff7b2e;
+    --accent-fg-orange: #ff9200;
+    --accent-fg-lime: #58cf04;
+    --accent-fg-green: #1ed45a;
+    --accent-fg-cyan: #00bdde;
+    --accent-fg-lightBlue: #00aeff;
+    --accent-fg-blue: #4f95ff;
+    --accent-fg-violet: #9e86fc;
+    --accent-fg-purple: #d478ff;
+    --accent-fg-pink: #fa73e3;
+    --shadow-xsmall: 0px 1px 2px -1px #1717171a;
+    --shadow-small: 0px 2px 4px -2px #1717170f, 0px 4px 6px -1px #1717170f;
+    --shadow-medium: 0px 4px 6px -2px #17171712, 0px 10px 15px -3px #17171712;
+    --shadow-large: 0px 6px 10px -4px #17171714, 0px 16px 24px -6px #17171714;
+    --shadow-xlarge: 0px 10px 15px -5px #1717171a, 0px 24px 38px -10px #1717171f;
+  }
+}
+
+/* 타입 스타일. font-size 를 직접 쓰지 말고 이 클래스를 쓴다. */
+.display1 {
+  font-family: var(--font-sans);
+  font-size: 3.5rem;
+  line-height: 4.5rem;
+  letter-spacing: -0.0319em;
+  font-weight: 700;
+}
+.display2 {
+  font-family: var(--font-sans);
+  font-size: 2.5rem;
+  line-height: 3.25rem;
+  letter-spacing: -0.0282em;
+  font-weight: 700;
+}
+.display3 {
+  font-family: var(--font-sans);
+  font-size: 2.25rem;
+  line-height: 3rem;
+  letter-spacing: -0.027em;
+  font-weight: 700;
+}
+.title1 {
+  font-family: var(--font-sans);
+  font-size: 2rem;
+  line-height: 2.75rem;
+  letter-spacing: -0.0253em;
+  font-weight: 700;
+}
+.title2 {
+  font-family: var(--font-sans);
+  font-size: 1.75rem;
+  line-height: 2.375rem;
+  letter-spacing: -0.0236em;
+  font-weight: 700;
+}
+.title3 {
+  font-family: var(--font-sans);
+  font-size: 1.5rem;
+  line-height: 2rem;
+  letter-spacing: -0.023em;
+  font-weight: 700;
+}
+.heading1 {
+  font-family: var(--font-sans);
+  font-size: 1.375rem;
+  line-height: 1.875rem;
+  letter-spacing: -0.0194em;
+  font-weight: 600;
+}
+.heading2 {
+  font-family: var(--font-sans);
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  letter-spacing: -0.012em;
+  font-weight: 600;
+}
+.headline1 {
+  font-family: var(--font-sans);
+  font-size: 1.125rem;
+  line-height: 1.625rem;
+  letter-spacing: -0.002em;
+  font-weight: 600;
+}
+.headline2 {
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.5rem;
+  letter-spacing: 0em;
+  font-weight: 600;
+}
+.body1 {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.5rem;
+  letter-spacing: 0.0057em;
+  font-weight: 400;
+}
+.body1-reading {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.625rem;
+  letter-spacing: 0.0057em;
+  font-weight: 400;
+}
+.body2 {
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  line-height: 1.375rem;
+  letter-spacing: 0.0096em;
+  font-weight: 400;
+}
+.body2-reading {
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  line-height: 1.5rem;
+  letter-spacing: 0.0096em;
+  font-weight: 400;
+}
+.label1 {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  letter-spacing: 0.0145em;
+  font-weight: 600;
+}
+.label1-reading {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  line-height: 1.375rem;
+  letter-spacing: 0.0145em;
+  font-weight: 400;
+}
+.label2 {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+  letter-spacing: 0.0194em;
+  font-weight: 600;
+}
+.caption1 {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  line-height: 1rem;
+  letter-spacing: 0.0252em;
+  font-weight: 400;
+}
+.caption2 {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  line-height: 0.875rem;
+  letter-spacing: 0.0311em;
+  font-weight: 400;
+}

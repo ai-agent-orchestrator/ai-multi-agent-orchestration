@@ -1,0 +1,60 @@
+/* 화면 오른쪽 아래에 고정한다. 헤더(z-index 10)보다 위에 보이게 한다. */
+.widget {
+    position: fixed;
+    right: var(--space-24);
+    bottom: var(--space-24);
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: var(--space-12);
+}
+
+.window {
+    width: min(380px, calc(100vw - 48px));
+    height: min(560px, calc(100vh - 140px));
+    display: flex;
+    flex-direction: column;
+    background: var(--background-normal);
+    border: 1px solid var(--line-solid-normal);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-large);
+    overflow: hidden;
+}
+
+/* display: flex 가 hidden 속성의 기본 동작(display: none)을 덮어쓰므로 다시 적어 준다. */
+.window[hidden] {
+    display: none;
+}
+
+.top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-12) var(--space-16);
+    border-bottom: 1px solid var(--line-solid-normal);
+}
+
+.close {
+    border: 0;
+    background: transparent;
+    color: var(--label-alternative);
+}
+
+.close:hover {
+    color: var(--label-normal);
+}
+
+.launcher {
+    border: 0;
+    height: 48px;
+    padding: 0 var(--space-20);
+    border-radius: var(--radius-full);
+    background: var(--primary-normal);
+    color: var(--static-white);
+    box-shadow: var(--shadow-medium);
+}
+
+.launcher:hover {
+    background: var(--primary-strong);
+}

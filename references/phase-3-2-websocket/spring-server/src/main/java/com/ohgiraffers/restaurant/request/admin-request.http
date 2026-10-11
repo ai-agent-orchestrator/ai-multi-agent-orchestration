@@ -1,0 +1,166 @@
+### 0. 먼저 member-request.http 의 '2-1. 로그인 (admin)'을 실행해 {{adminToken}} 을 받아둔다.
+
+### 1. 메뉴 목록 (관리자용)
+# 주문 불가('N') 메뉴까지 포함한다. 삭제된 메뉴는 제외한다.
+GET http://localhost:8080/api/admin/menus?page=1&size=10
+Authorization: Bearer {{adminToken}}
+
+### 1-1. [Phase 1 의 문제점이 막혔는지 확인] 토큰 없이 관리자 API 호출 (-> 401)
+GET http://localhost:8080/api/admin/menus
+
+### 1-2. [Phase 1 의 문제점이 막혔는지 확인] 손님 토큰으로 관리자 API 호출 (-> 403)
+GET http://localhost:8080/api/admin/menus
+Authorization: Bearer {{userToken}}
+
+### 2. 메뉴 등록 (이미지 포함)
+# multipart/form-data로 요청한다. 알레르기처럼 여러 값은 같은 이름(allergenCodes)으로 여러 번 보낸다.
+# 이미지 파일 경로는 이 .http 파일 위치를 기준으로 한 상대 경로다.
+POST http://localhost:8080/api/admin/menus
+Authorization: Bearer {{adminToken}}
+Content-Type: multipart/form-data; boundary=OhgiBoundary
+
+--OhgiBoundary
+Content-Disposition: form-data; name="menuName"
+
+오지라퍼 비빔밥
+--OhgiBoundary
+Content-Disposition: form-data; name="menuPrice"
+
+11000
+--OhgiBoundary
+Content-Disposition: form-data; name="categoryCode"
+
+4
+--OhgiBoundary
+Content-Disposition: form-data; name="orderableStatus"
+
+Y
+--OhgiBoundary
+Content-Disposition: form-data; name="menuDescription"
+
+제철 나물과 달걀 프라이를 올린 비빔밥이다. 고추장을 넣어 매콤하게 비벼 먹는다.
+--OhgiBoundary
+Content-Disposition: form-data; name="menuIngredients"
+
+밥, 제철 나물, 달걀, 고추장, 참기름
+--OhgiBoundary
+Content-Disposition: form-data; name="allergenCodes"
+
+1
+--OhgiBoundary
+Content-Disposition: form-data; name="allergenCodes"
+
+5
+--OhgiBoundary
+Content-Disposition: form-data; name="menuImage"; filename="bibimbap.png"
+Content-Type: image/png
+
+< ../../../../../../../seed-images/7b91aee3ddec49a69a9b7d2849493f7f.PNG
+--OhgiBoundary--
+
+### 2-1. 메뉴 등록 (이미지 없이)
+POST http://localhost:8080/api/admin/menus
+Authorization: Bearer {{adminToken}}
+Content-Type: multipart/form-data; boundary=OhgiBoundary
+
+--OhgiBoundary
+Content-Disposition: form-data; name="menuName"
+
+오지라퍼 냉면
+--OhgiBoundary
+Content-Disposition: form-data; name="menuPrice"
+
+9000
+--OhgiBoundary
+Content-Disposition: form-data; name="categoryCode"
+
+4
+--OhgiBoundary
+Content-Disposition: form-data; name="orderableStatus"
+
+Y
+--OhgiBoundary
+Content-Disposition: form-data; name="menuDescription"
+
+살얼음이 낀 육수에 메밀면을 말았다. 아주 시원하다.
+--OhgiBoundary
+Content-Disposition: form-data; name="menuIngredients"
+
+메밀면, 쇠고기 육수, 오이, 무, 달걀
+--OhgiBoundary
+Content-Disposition: form-data; name="allergenCodes"
+
+3
+--OhgiBoundary
+Content-Disposition: form-data; name="allergenCodes"
+
+16
+--OhgiBoundary--
+
+### 2-2. 메뉴 등록 실패 (입력값 검증 실패 -> 400)
+POST http://localhost:8080/api/admin/menus
+Authorization: Bearer {{adminToken}}
+Content-Type: multipart/form-data; boundary=OhgiBoundary
+
+--OhgiBoundary
+Content-Disposition: form-data; name="menuName"
+
+주문상태가 잘못된 메뉴
+--OhgiBoundary
+Content-Disposition: form-data; name="menuPrice"
+
+5000
+--OhgiBoundary
+Content-Disposition: form-data; name="categoryCode"
+
+4
+--OhgiBoundary
+Content-Disposition: form-data; name="orderableStatus"
+
+X
+--OhgiBoundary--
+
+### 3. 메뉴 수정 (이미지를 보내지 않으면 기존 이미지를 유지한다)
+# 1번 메뉴를 품절(N) 처리하고 알레르기 목록을 우유(2)만 남긴다.
+PUT http://localhost:8080/api/admin/menus/1
+Authorization: Bearer {{adminToken}}
+Content-Type: multipart/form-data; boundary=OhgiBoundary
+
+--OhgiBoundary
+Content-Disposition: form-data; name="menuName"
+
+열무김치라떼
+--OhgiBoundary
+Content-Disposition: form-data; name="menuPrice"
+
+4500
+--OhgiBoundary
+Content-Disposition: form-data; name="categoryCode"
+
+8
+--OhgiBoundary
+Content-Disposition: form-data; name="orderableStatus"
+
+N
+--OhgiBoundary
+Content-Disposition: form-data; name="menuDescription"
+
+에스프레소와 우유에 잘 익은 열무김치 국물을 더한 라떼다. (오늘은 품절)
+--OhgiBoundary
+Content-Disposition: form-data; name="menuIngredients"
+
+에스프레소, 우유, 열무김치 국물, 설탕
+--OhgiBoundary
+Content-Disposition: form-data; name="allergenCodes"
+
+2
+--OhgiBoundary--
+
+### 4. 메뉴 삭제 (soft delete)
+# 행을 지우지 않고 deleted_status만 'Y'로 바꾼다. 이후 손님·관리자 목록과 상세 조회에서 모두 사라진다.
+DELETE http://localhost:8080/api/admin/menus/36
+Authorization: Bearer {{adminToken}}
+
+### 5. 전체 주문 내역 (관리자용)
+GET http://localhost:8080/api/admin/orders
+Authorization: Bearer {{adminToken}}

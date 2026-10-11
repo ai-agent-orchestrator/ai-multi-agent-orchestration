@@ -1,0 +1,28 @@
+.stepper {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--line-normal);
+    border-radius: var(--radius-sm);
+    background: var(--background-elevated);
+}
+
+.button {
+    width: 36px;
+    height: 36px;
+    border: 0;
+    background: transparent;
+    color: var(--label-normal);
+}
+
+.button:hover:not(:disabled) {
+    background: var(--fill-normal);
+}
+
+.button:disabled {
+    color: var(--label-disable);
+}
+
+.value {
+    min-width: 32px;
+    text-align: center;
+}

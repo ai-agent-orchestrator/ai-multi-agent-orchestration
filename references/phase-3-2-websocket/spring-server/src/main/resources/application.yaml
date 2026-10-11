@@ -1,0 +1,135 @@
+# =================================================================================================
+# 오지라퍼 레스토랑 Phase 3-2 설정 (Spring Security + JWT + OpenAI 추천 채팅 + 메뉴 설명 초안)
+# -------------------------------------------------------------------------------------------------
+# 데이터베이스는 이 프로젝트 전용인 ohgirestaurant를 사용한다. (sql/00_01, 00_02 스크립트 참고)
+# 업로드 파일은 04_spring_boot chap06(file upload)과 같은 외부 경로에 저장한다.
+# =================================================================================================
+
+# 1. Spring config
+spring:
+  application:
+    name: ohgi-restaurant
+
+  # 1-1. db config
+  datasource:
+    url: jdbc:mysql://localhost:3306/ohgirestaurant
+    username: ohgiraffers
+    password: ohgiraffers
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  # 1-2. jpa config
+  jpa:
+    generate-ddl: false
+    database: mysql
+    properties:
+      hibernate:
+        format_sql: true
+        highlight_sql: true
+        use_sql_comments: true
+
+  # 1-3. jackson config
+  # 설명. JSON에 없거나 null인 값을 int 같은 기본형에 넣을 때 오류 대신 0으로 처리한다.
+  #  (Spring Boot 4의 Jackson 3는 기본값이 '오류'로 바뀌었다. 04_spring_data_jpa chap06과 같은 설정이다)
+  jackson:
+    deserialization:
+      fail-on-null-for-primitives: false
+
+  # 1-4. paging config
+  # 설명. 요청의 page 파라미터를 1부터 세는 값으로 해석한다. (?page=1 이 첫 페이지)
+  data:
+    web:
+      pageable:
+        one-indexed-parameters: true
+
+  # 1-5. virtual thread config  [Phase 3]
+  # 설명. Spring Boot는 요청 처리와 비동기 작업에 플랫폼 스레드(OS 스레드와 1:1)의 풀을 쓴다.
+  #  - 내장 톰캣의 요청 처리 스레드 : 최대 200개 (이름 http-nio-8080-exec-N)
+  #  - 비동기 작업용 실행기(applicationTaskExecutor) : 기본 8개, 넘치는 작업은 큐에서 기다린다 (이름 task-N)
+  #  우리가 구현할 AI 추천 기능(SSE)은 LLM 서버가 응답을 다 보낼 때까지 몇 초 동안 작업 스레드 하나를 점유한다.
+  #  따라서 동시에 여러 사용자가 AI 추천 기능을 사용하면 스레드 개수만큼만 동시에 처리되고, 나머지 요청은 줄을 서게 된다.
+  #  Java 21 에서 아래 설정을 켜면 두 곳 모두 가상 스레드로 자동 교체된다. (가상 스레드는 풀 없이 작업마다 새로 만든다)
+  #  가상 스레드는 LLM 서버의 응답을 기다리는 동안 OS 스레드를 내려놓으므로, 그 OS 스레드는 다른 요청을 처리할 수 있다.
+  threads:
+    virtual:
+      enabled: true
+
+  # 1-6. multipart config
+  # 설명. 업로드할 수 있는 파일 하나의 최대 크기와 요청 하나의 최대 크기
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+# 2. file upload config
+# 설명. OS별 업로드 파일 저장 경로 (04_spring_boot chap06과 같은 경로)
+#  메뉴 이미지는 이 경로 아래 menus 폴더에 저장되며, http://localhost:8080/uploads/menus/파일명 으로 접근한다.
+#  [주의!] 처음 실행하기 전에 seed-images 폴더의 이미지 21장을 {이 경로}/menus 폴더로 복사해야
+#  초기 데이터의 메뉴 이미지가 화면에 보인다. (README.md 참고)
+file:
+  upload:
+    windows:
+      path: C:/myWs/uploadedFiles
+    mac:
+      path: /myWs/uploadedFiles
+
+# 3. logging config
+logging:
+  level:
+    # 실행되는 SQL 출력
+    org.hibernate.SQL: debug
+    # 바인딩되는 파라미터 출력
+    org.hibernate.orm.jdbc.bind: trace
+
+# 4. server config
+server:
+  port: 8080
+
+# 5. springdoc config
+# 설명. API 명세 문서(Swagger UI) 주소
+#  - http://localhost:8080/swagger-ui.html : 브라우저에서 API 목록을 보고 직접 요청해볼 수 있는 화면
+#  - http://localhost:8080/v3/api-docs     : 같은 내용을 담은 OpenAPI 명세(JSON)
+#  React를 바이브 코딩할 때 이 명세를 AI에게 그대로 전달하면 API 호출 코드를 정확하게 만들어준다.
+springdoc:
+  swagger-ui:
+    # API를 컨트롤러 순서가 아닌 태그(도메인) 이름순으로 정렬한다.
+    tags-sorter: alpha
+
+# 6. jwt config  [Phase 2]
+# 설명. secret : base64-key-generator 로 만든 비밀키. 바꾸면 그전에 발급한 토큰은 모두 무효가 된다.
+#       access-token-expiration : 밀리초. 3600000 = 1시간 (만료를 확인하려면 60000 으로 바꾼다)
+#  [주의!] 아래 비밀키는 수업용 예시다. 실제 서비스에서는 Git 에 올리지 않고 환경 변수로 넣는다. (secret: ${JWT_SECRET})
+jwt:
+  secret: BO2Mnkq7R5IR9UZSNRuyr9-kEvl3mT1stZpuw0WWXdk
+  access-token-expiration: 3600000
+
+# 7. openai config  [Phase 3]
+# 설명. api-key : OpenAI API 키. 환경 변수 OPENAI_API_KEY 에서 읽는다.
+#  (환경 변수 설정이 되어있지 않으면 빈 값이 되고, AI 관련 기능만 503 으로 응답하게 된다)
+openai:
+  api-key: ${OPENAI_API_KEY:}
+  base-url: https://api.openai.com/v1
+  # 기능마다 모델을 따로 정한다. 만약 결과가 비슷하다면 더 저렴한 모델을 사용한다.
+  model:
+    # 손님의 AI 추천 채팅에서 검색 조건 뽑기 (구조화 출력)
+    extract: gpt-6-luna
+    # 손님에게 응답할 추천 문장 만들기 (스트리밍)
+    chat: gpt-6-luna
+    # [Phase 3-2] 관리자 메뉴 설명 초안 (WebSocket 으로 스트리밍)
+    draft: gpt-6-luna
+    # [Phase 3-2 선택] 관리자 메뉴 사진 만들기
+    image: gpt-image-2.5-flare
+  # 한 번에 만들 수 있는 최대 출력 토큰. 토큰 비용의 상한이다.
+  max-output-tokens:
+    extract: 300
+    chat: 800
+    draft: 400
+  # 추론 모델이 응답하기 전에 '생각'하는 정도. (생각한 토큰도 돈과 시간이 든다)
+  # 모델마다 선택할 수 있는 값이 다르고, 추론 기능이 없는 모델(gpt-4.1-nano 등)은 비워 둔다.
+  reasoning-effort:
+    extract: none
+    chat: none
+    draft: none
+  # [Phase 3-2 선택] 이미지 : quality 가 높을수록 오래 걸리고 비싸다. low 는 1024x1024 한 장에 약 8초, 10원 안팎이다.
+  image:
+    size: 1024x1024
+    quality: low

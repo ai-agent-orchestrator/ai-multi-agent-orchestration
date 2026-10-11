@@ -1,0 +1,876 @@
+{
+  "name": "Montage",
+  "version": 1,
+  "color": {
+    "themes": [
+      {
+        "id": "light",
+        "name": "Light"
+      },
+      {
+        "id": "dark",
+        "name": "Dark"
+      }
+    ],
+    "tokens": [
+      {
+        "name": "primary-normal",
+        "value": {
+          "light": "#0066ff",
+          "dark": "#3385ff"
+        },
+        "usage": "기본 액션. 채워진 버튼의 배경, 선택된 탭, 링크."
+      },
+      {
+        "name": "primary-strong",
+        "value": {
+          "light": "#005eeb",
+          "dark": "#1a75ff"
+        },
+        "usage": "primary 요소의 hover 상태."
+      },
+      {
+        "name": "primary-heavy",
+        "value": {
+          "light": "#0054d1",
+          "dark": "#0066ff"
+        },
+        "usage": "primary 요소의 press 상태."
+      },
+      {
+        "name": "label-normal",
+        "value": {
+          "light": "#171719",
+          "dark": "#f7f7f8"
+        },
+        "usage": "본문과 제목의 기본 글자색. 텍스트는 이 토큰부터 쓴다."
+      },
+      {
+        "name": "label-strong",
+        "value": {
+          "light": "#000000",
+          "dark": "#ffffff"
+        },
+        "usage": "가장 강한 대비가 필요한 제목."
+      },
+      {
+        "name": "label-neutral",
+        "value": {
+          "light": "#2e2f33e0",
+          "dark": "#c2c4c8e0"
+        },
+        "usage": "본문보다 한 단계 약한 글자."
+      },
+      {
+        "name": "label-alternative",
+        "value": {
+          "light": "#37383c9c",
+          "dark": "#aeb0b69c"
+        },
+        "usage": "보조 설명, 캡션, 메타데이터."
+      },
+      {
+        "name": "label-assistive",
+        "value": {
+          "light": "#37383c47",
+          "dark": "#aeb0b647"
+        },
+        "usage": "플레이스홀더 전용. 읽어야 하는 글자에는 쓰지 않는다 (대비 미달)."
+      },
+      {
+        "name": "label-disable",
+        "value": {
+          "light": "#37383c29",
+          "dark": "#989ba229"
+        },
+        "usage": "비활성 컨트롤의 글자."
+      },
+      {
+        "name": "background-normal",
+        "value": {
+          "light": "#ffffff",
+          "dark": "#1b1c1e"
+        },
+        "usage": "페이지 바탕."
+      },
+      {
+        "name": "background-alternative",
+        "value": {
+          "light": "#f7f7f8",
+          "dark": "#0f0f10"
+        },
+        "usage": "한 단계 들어간 영역. 카드가 올라가는 바탕."
+      },
+      {
+        "name": "background-elevated",
+        "value": {
+          "light": "#ffffff",
+          "dark": "#212225"
+        },
+        "usage": "카드·시트·모달처럼 떠 있는 면."
+      },
+      {
+        "name": "line-normal",
+        "value": {
+          "light": "#70737c38",
+          "dark": "#70737c52"
+        },
+        "usage": "기본 반투명 경계선."
+      },
+      {
+        "name": "line-neutral",
+        "value": {
+          "light": "#70737c29",
+          "dark": "#70737c47"
+        },
+        "usage": "한 단계 약한 경계선."
+      },
+      {
+        "name": "line-solid-normal",
+        "value": {
+          "light": "#e1e2e4",
+          "dark": "#37383c"
+        },
+        "usage": "불투명 경계선. 선이 겹쳐 색이 누적되면 안 되는 자리."
+      },
+      {
+        "name": "line-primary-normal",
+        "value": {
+          "light": "#0066ff47",
+          "dark": "#3385ff47"
+        },
+        "usage": "primary 요소의 경계선."
+      },
+      {
+        "name": "fill-normal",
+        "value": {
+          "light": "#70737c14",
+          "dark": "#70737c38"
+        },
+        "usage": "보조 버튼과 칩의 채움."
+      },
+      {
+        "name": "fill-strong",
+        "value": {
+          "light": "#70737c29",
+          "dark": "#70737c47"
+        },
+        "usage": "fill-normal 요소의 hover."
+      },
+      {
+        "name": "fill-alternative",
+        "value": {
+          "light": "#70737c0d",
+          "dark": "#70737c1f"
+        },
+        "usage": "가장 약한 채움. 스켈레톤, 슬라이더 트랙."
+      },
+      {
+        "name": "interaction-inactive",
+        "value": {
+          "light": "#989ba2",
+          "dark": "#5a5c63"
+        },
+        "usage": "꺼진 토글·스위치의 트랙."
+      },
+      {
+        "name": "interaction-disable",
+        "value": {
+          "light": "#f4f4f5",
+          "dark": "#2e2f33"
+        },
+        "usage": "비활성 컨트롤의 배경."
+      },
+      {
+        "name": "status-positive",
+        "value": {
+          "light": "#00bf40",
+          "dark": "#1ed45a"
+        },
+        "usage": "성공."
+      },
+      {
+        "name": "status-cautionary",
+        "value": {
+          "light": "#ff9200",
+          "dark": "#ffa938"
+        },
+        "usage": "주의."
+      },
+      {
+        "name": "status-negative",
+        "value": {
+          "light": "#ff4242",
+          "dark": "#ff6363"
+        },
+        "usage": "오류. 폼 검증 실패."
+      },
+      {
+        "name": "background-status-positive",
+        "value": {
+          "light": "#00bf4014",
+          "dark": "#1ed45a14"
+        },
+        "usage": "성공 메시지 블록의 배경."
+      },
+      {
+        "name": "background-status-cautionary",
+        "value": {
+          "light": "#ff920014",
+          "dark": "#ffa93814"
+        },
+        "usage": "주의 메시지 블록의 배경."
+      },
+      {
+        "name": "background-status-negative",
+        "value": {
+          "light": "#ff424214",
+          "dark": "#ff636314"
+        },
+        "usage": "오류 메시지 블록의 배경."
+      },
+      {
+        "name": "inverse-background",
+        "value": {
+          "light": "#1b1c1e",
+          "dark": "#ffffff"
+        },
+        "usage": "툴팁·스낵바처럼 바탕을 뒤집는 면."
+      },
+      {
+        "name": "inverse-label",
+        "value": {
+          "light": "#f7f7f8",
+          "dark": "#171719"
+        },
+        "usage": "inverse-background 위의 글자."
+      },
+      {
+        "name": "inverse-primary",
+        "value": {
+          "light": "#3385ff",
+          "dark": "#0066ff"
+        },
+        "usage": "inverse-background 위의 액션."
+      },
+      {
+        "name": "material-dimmer",
+        "value": {
+          "light": "#17171985",
+          "dark": "#171719bd"
+        },
+        "usage": "모달 뒤를 덮는 막."
+      },
+      {
+        "name": "static-white",
+        "value": {
+          "light": "#ffffff",
+          "dark": "#ffffff"
+        },
+        "usage": "테마와 무관하게 흰색. primary 배경 위의 글자."
+      },
+      {
+        "name": "static-black",
+        "value": {
+          "light": "#000000",
+          "dark": "#000000"
+        },
+        "usage": "테마와 무관하게 검정."
+      },
+      {
+        "name": "accent-bg-redOrange",
+        "value": {
+          "light": "#ff5e00",
+          "dark": "#ff7b2e"
+        },
+        "usage": "배지·칩의 색면. 그 위에 올릴 글자는 static-white."
+      },
+      {
+        "name": "accent-bg-lime",
+        "value": {
+          "light": "#58cf04",
+          "dark": "#6be016"
+        },
+        "usage": "배지·칩의 색면. 그 위에 올릴 글자는 static-white."
+      },
+      {
+        "name": "accent-bg-cyan",
+        "value": {
+          "light": "#00bdde",
+          "dark": "#28d0ed"
+        },
+        "usage": "배지·칩의 색면. 그 위에 올릴 글자는 static-white."
+      },
+      {
+        "name": "accent-bg-lightBlue",
+        "value": {
+          "light": "#00aeff",
+          "dark": "#3dc2ff"
+        },
+        "usage": "배지·칩의 색면. 그 위에 올릴 글자는 static-white."
+      },
+      {
+        "name": "accent-bg-violet",
+        "value": {
+          "light": "#6541f2",
+          "dark": "#7d5ef7"
+        },
+        "usage": "배지·칩의 색면. 그 위에 올릴 글자는 static-white."
+      },
+      {
+        "name": "accent-bg-purple",
+        "value": {
+          "light": "#cb59ff",
+          "dark": "#d478ff"
+        },
+        "usage": "배지·칩의 색면. 그 위에 올릴 글자는 static-white."
+      },
+      {
+        "name": "accent-bg-pink",
+        "value": {
+          "light": "#f553da",
+          "dark": "#fa73e3"
+        },
+        "usage": "배지·칩의 색면. 그 위에 올릴 글자는 static-white."
+      },
+      {
+        "name": "accent-fg-red",
+        "value": {
+          "light": "#e52222",
+          "dark": "#ff6363"
+        },
+        "usage": "background-normal 위에 얹는 글자·아이콘 색. 색면에는 쓰지 않는다."
+      },
+      {
+        "name": "accent-fg-redOrange",
+        "value": {
+          "light": "#f55a00",
+          "dark": "#ff7b2e"
+        },
+        "usage": "background-normal 위에 얹는 글자·아이콘 색. 색면에는 쓰지 않는다."
+      },
+      {
+        "name": "accent-fg-orange",
+        "value": {
+          "light": "#d17600",
+          "dark": "#ff9200"
+        },
+        "usage": "background-normal 위에 얹는 글자·아이콘 색. 색면에는 쓰지 않는다."
+      },
+      {
+        "name": "accent-fg-lime",
+        "value": {
+          "light": "#429e00",
+          "dark": "#58cf04"
+        },
+        "usage": "background-normal 위에 얹는 글자·아이콘 색. 색면에는 쓰지 않는다."
+      },
+      {
+        "name": "accent-fg-green",
+        "value": {
+          "light": "#009632",
+          "dark": "#1ed45a"
+        },
+        "usage": "background-normal 위에 얹는 글자·아이콘 색. 색면에는 쓰지 않는다."
+      },
+      {
+        "name": "accent-fg-cyan",
+        "value": {
+          "light": "#0098b2",
+          "dark": "#00bdde"
+        },
+        "usage": "background-normal 위에 얹는 글자·아이콘 색. 색면에는 쓰지 않는다."
+      },
+      {
+        "name": "accent-fg-lightBlue",
+        "value": {
+          "light": "#008dcf",
+          "dark": "#00aeff"
+        },
+        "usage": "background-normal 위에 얹는 글자·아이콘 색. 색면에는 쓰지 않는다."
+      },
+      {
+        "name": "accent-fg-blue",
+        "value": {
+          "light": "#005eeb",
+          "dark": "#4f95ff"
+        },
+        "usage": "background-normal 위에 얹는 글자·아이콘 색. 색면에는 쓰지 않는다."
+      },
+      {
+        "name": "accent-fg-violet",
+        "value": {
+          "light": "#5b37ed",
+          "dark": "#9e86fc"
+        },
+        "usage": "background-normal 위에 얹는 글자·아이콘 색. 색면에는 쓰지 않는다."
+      },
+      {
+        "name": "accent-fg-purple",
+        "value": {
+          "light": "#ad36e3",
+          "dark": "#d478ff"
+        },
+        "usage": "background-normal 위에 얹는 글자·아이콘 색. 색면에는 쓰지 않는다."
+      },
+      {
+        "name": "accent-fg-pink",
+        "value": {
+          "light": "#e846cd",
+          "dark": "#fa73e3"
+        },
+        "usage": "background-normal 위에 얹는 글자·아이콘 색. 색면에는 쓰지 않는다."
+      }
+    ]
+  },
+  "type": {
+    "fonts": [
+      {
+        "family": "Pretendard",
+        "file": "fonts/Pretendard-Regular.subset.woff2",
+        "weight": "400",
+        "style": "normal"
+      },
+      {
+        "family": "Pretendard",
+        "file": "fonts/Pretendard-Medium.subset.woff2",
+        "weight": "500",
+        "style": "normal"
+      },
+      {
+        "family": "Pretendard",
+        "file": "fonts/Pretendard-SemiBold.subset.woff2",
+        "weight": "600",
+        "style": "normal"
+      },
+      {
+        "family": "Pretendard",
+        "file": "fonts/Pretendard-Bold.subset.woff2",
+        "weight": "700",
+        "style": "normal"
+      }
+    ],
+    "families": {
+      "sans": "\"Pretendard\", -apple-system, BlinkMacSystemFont, system-ui, sans-serif"
+    },
+    "groups": [
+      {
+        "name": "Display",
+        "family": "sans",
+        "styles": [
+          {
+            "name": "display1",
+            "fontSize": "3.5rem",
+            "lineHeight": "4.5rem",
+            "letterSpacing": "-0.0319em",
+            "fontWeight": 700,
+            "usage": "랜딩 히어로. 한 화면에 하나만."
+          },
+          {
+            "name": "display2",
+            "fontSize": "2.5rem",
+            "lineHeight": "3.25rem",
+            "letterSpacing": "-0.0282em",
+            "fontWeight": 700,
+            "usage": "섹션 대제목."
+          },
+          {
+            "name": "display3",
+            "fontSize": "2.25rem",
+            "lineHeight": "3rem",
+            "letterSpacing": "-0.027em",
+            "fontWeight": 700,
+            "usage": "섹션 대제목 (좁은 화면)."
+          }
+        ]
+      },
+      {
+        "name": "Title",
+        "family": "sans",
+        "styles": [
+          {
+            "name": "title1",
+            "fontSize": "2rem",
+            "lineHeight": "2.75rem",
+            "letterSpacing": "-0.0253em",
+            "fontWeight": 700,
+            "usage": "페이지 제목."
+          },
+          {
+            "name": "title2",
+            "fontSize": "1.75rem",
+            "lineHeight": "2.375rem",
+            "letterSpacing": "-0.0236em",
+            "fontWeight": 700,
+            "usage": "페이지 제목 (좁은 화면)."
+          },
+          {
+            "name": "title3",
+            "fontSize": "1.5rem",
+            "lineHeight": "2rem",
+            "letterSpacing": "-0.023em",
+            "fontWeight": 700,
+            "usage": "모달 제목, 큰 카드의 제목."
+          }
+        ]
+      },
+      {
+        "name": "Heading",
+        "family": "sans",
+        "styles": [
+          {
+            "name": "heading1",
+            "fontSize": "1.375rem",
+            "lineHeight": "1.875rem",
+            "letterSpacing": "-0.0194em",
+            "fontWeight": 600,
+            "usage": "섹션 제목."
+          },
+          {
+            "name": "heading2",
+            "fontSize": "1.25rem",
+            "lineHeight": "1.75rem",
+            "letterSpacing": "-0.012em",
+            "fontWeight": 600,
+            "usage": "하위 섹션 제목."
+          }
+        ]
+      },
+      {
+        "name": "Headline",
+        "family": "sans",
+        "styles": [
+          {
+            "name": "headline1",
+            "fontSize": "1.125rem",
+            "lineHeight": "1.625rem",
+            "letterSpacing": "-0.002em",
+            "fontWeight": 600,
+            "usage": "카드 제목, 리스트 항목의 제목."
+          },
+          {
+            "name": "headline2",
+            "fontSize": "1.0625rem",
+            "lineHeight": "1.5rem",
+            "letterSpacing": "0em",
+            "fontWeight": 600,
+            "usage": "조밀한 리스트의 항목 제목."
+          }
+        ]
+      },
+      {
+        "name": "Body",
+        "family": "sans",
+        "styles": [
+          {
+            "name": "body1",
+            "fontSize": "1rem",
+            "lineHeight": "1.5rem",
+            "letterSpacing": "0.0057em",
+            "fontWeight": 400,
+            "usage": "기본 본문."
+          },
+          {
+            "name": "body1-reading",
+            "fontSize": "1rem",
+            "lineHeight": "1.625rem",
+            "letterSpacing": "0.0057em",
+            "fontWeight": 400,
+            "usage": "여러 문단이 이어지는 본문. 행간이 넓다."
+          },
+          {
+            "name": "body2",
+            "fontSize": "0.9375rem",
+            "lineHeight": "1.375rem",
+            "letterSpacing": "0.0096em",
+            "fontWeight": 400,
+            "usage": "조밀한 본문."
+          },
+          {
+            "name": "body2-reading",
+            "fontSize": "0.9375rem",
+            "lineHeight": "1.5rem",
+            "letterSpacing": "0.0096em",
+            "fontWeight": 400,
+            "usage": "조밀한 읽기용 본문."
+          }
+        ]
+      },
+      {
+        "name": "Label",
+        "family": "sans",
+        "styles": [
+          {
+            "name": "label1",
+            "fontSize": "0.875rem",
+            "lineHeight": "1.25rem",
+            "letterSpacing": "0.0145em",
+            "fontWeight": 600,
+            "usage": "버튼, 탭, 폼 라벨."
+          },
+          {
+            "name": "label1-reading",
+            "fontSize": "0.875rem",
+            "lineHeight": "1.375rem",
+            "letterSpacing": "0.0145em",
+            "fontWeight": 400,
+            "usage": "여러 줄로 감기는 라벨."
+          },
+          {
+            "name": "label2",
+            "fontSize": "0.8125rem",
+            "lineHeight": "1.125rem",
+            "letterSpacing": "0.0194em",
+            "fontWeight": 600,
+            "usage": "작은 버튼, 칩."
+          }
+        ]
+      },
+      {
+        "name": "Caption",
+        "family": "sans",
+        "styles": [
+          {
+            "name": "caption1",
+            "fontSize": "0.75rem",
+            "lineHeight": "1rem",
+            "letterSpacing": "0.0252em",
+            "fontWeight": 400,
+            "usage": "메타데이터, 보조 설명."
+          },
+          {
+            "name": "caption2",
+            "fontSize": "0.6875rem",
+            "lineHeight": "0.875rem",
+            "letterSpacing": "0.0311em",
+            "fontWeight": 400,
+            "usage": "가장 작은 글자. 배지 안의 숫자."
+          }
+        ]
+      }
+    ]
+  },
+  "spacing": {
+    "note": "montage 의 spacing 스케일. 레이아웃 간격은 이 안에서만 고른다.",
+    "tokens": [
+      {
+        "name": "space-0",
+        "value": "0px",
+        "usage": "레이아웃 간격."
+      },
+      {
+        "name": "space-0_5",
+        "value": "0.5px",
+        "usage": "레이아웃 간격."
+      },
+      {
+        "name": "space-1",
+        "value": "1px",
+        "usage": "레이아웃 간격."
+      },
+      {
+        "name": "space-2",
+        "value": "2px",
+        "usage": "레이아웃 간격."
+      },
+      {
+        "name": "space-4",
+        "value": "4px",
+        "usage": "아이콘과 글자 사이."
+      },
+      {
+        "name": "space-6",
+        "value": "6px",
+        "usage": "레이아웃 간격."
+      },
+      {
+        "name": "space-8",
+        "value": "8px",
+        "usage": "칩 안쪽 좌우 여백."
+      },
+      {
+        "name": "space-10",
+        "value": "10px",
+        "usage": "레이아웃 간격."
+      },
+      {
+        "name": "space-12",
+        "value": "12px",
+        "usage": "리스트 항목 사이."
+      },
+      {
+        "name": "space-14",
+        "value": "14px",
+        "usage": "레이아웃 간격."
+      },
+      {
+        "name": "space-16",
+        "value": "16px",
+        "usage": "카드 안쪽 여백의 기본값."
+      },
+      {
+        "name": "space-20",
+        "value": "20px",
+        "usage": "카드 안쪽 여백 (넓게)."
+      },
+      {
+        "name": "space-24",
+        "value": "24px",
+        "usage": "섹션 사이."
+      },
+      {
+        "name": "space-32",
+        "value": "32px",
+        "usage": "섹션 사이 (넓게)."
+      },
+      {
+        "name": "space-40",
+        "value": "40px",
+        "usage": "페이지 상하 여백."
+      },
+      {
+        "name": "space-48",
+        "value": "48px",
+        "usage": "레이아웃 간격."
+      },
+      {
+        "name": "space-56",
+        "value": "56px",
+        "usage": "레이아웃 간격."
+      },
+      {
+        "name": "space-64",
+        "value": "64px",
+        "usage": "레이아웃 간격."
+      },
+      {
+        "name": "space-72",
+        "value": "72px",
+        "usage": "레이아웃 간격."
+      },
+      {
+        "name": "space-80",
+        "value": "80px",
+        "usage": "레이아웃 간격."
+      }
+    ]
+  },
+  "radius": {
+    "tokens": [
+      {
+        "name": "radius-chip",
+        "value": "6px",
+        "usage": "작은 칩."
+      },
+      {
+        "name": "radius-sm",
+        "value": "8px",
+        "usage": "small 버튼, 칩, 인풋."
+      },
+      {
+        "name": "radius-md",
+        "value": "10px",
+        "usage": "medium 버튼."
+      },
+      {
+        "name": "radius-lg",
+        "value": "12px",
+        "usage": "large 버튼과 카드. 가장 많이 쓰는 값."
+      },
+      {
+        "name": "radius-full",
+        "value": "9999px",
+        "usage": "아바타, 알약형 배지."
+      }
+    ]
+  },
+  "shadow": {
+    "note": "카드를 띄울 때만 쓴다. 평면 위의 구분은 line-solid-normal 이 먼저다.",
+    "tokens": [
+      {
+        "name": "shadow-xsmall",
+        "value": "0px 1px 2px -1px #1717171a",
+        "usage": "살짝 떠 있는 입력창."
+      },
+      {
+        "name": "shadow-small",
+        "value": "0px 2px 4px -2px #1717170f, 0px 4px 6px -1px #1717170f",
+        "usage": "카드 hover."
+      },
+      {
+        "name": "shadow-medium",
+        "value": "0px 4px 6px -2px #17171712, 0px 10px 15px -3px #17171712",
+        "usage": "드롭다운, 팝오버."
+      },
+      {
+        "name": "shadow-large",
+        "value": "0px 6px 10px -4px #17171714, 0px 16px 24px -6px #17171714",
+        "usage": "바텀시트."
+      },
+      {
+        "name": "shadow-xlarge",
+        "value": "0px 10px 15px -5px #1717171a, 0px 24px 38px -10px #1717171f",
+        "usage": "모달."
+      }
+    ]
+  },
+  "breakpoint": {
+    "note": "min-width 로 올려 쓴다 (모바일 우선).",
+    "tokens": [
+      {
+        "name": "breakpoint-xs",
+        "value": "0px",
+        "usage": "기본."
+      },
+      {
+        "name": "breakpoint-sm",
+        "value": "768px",
+        "usage": "태블릿 세로."
+      },
+      {
+        "name": "breakpoint-md",
+        "value": "992px",
+        "usage": "태블릿 가로."
+      },
+      {
+        "name": "breakpoint-lg",
+        "value": "1200px",
+        "usage": "데스크톱."
+      },
+      {
+        "name": "breakpoint-xl",
+        "value": "1600px",
+        "usage": "와이드 데스크톱."
+      }
+    ]
+  },
+  "meta": {
+    "source": "github",
+    "repo": "owlohgiraffers/wanted-montage-web",
+    "ref": "main",
+    "package": "packages/wds-theme",
+    "paths": {
+      "tokens": [
+        "packages/wds-theme/src/theme/atomic/*.ts",
+        "packages/wds-theme/src/theme/semantic/index.ts",
+        "packages/wds-theme/src/theme/spacing/index.ts",
+        "packages/wds-theme/src/theme/opacity/index.ts",
+        "packages/wds-theme/src/theme/breakpoint/index.ts",
+        "packages/wds/src/components/typography/style.ts",
+        "packages/wds/src/components/button/style.ts",
+        "packages/wds/src/components/card/style.ts",
+        "packages/wds/src/components/chip/style.ts"
+      ],
+      "fonts": [
+        "cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/static/woff2-subset"
+      ],
+      "assets": [],
+      "docs": [
+        "README.md",
+        "packages/wds/README.md"
+      ]
+    },
+    "components": {},
+    "synced": "2026-09-17"
+  }
+}

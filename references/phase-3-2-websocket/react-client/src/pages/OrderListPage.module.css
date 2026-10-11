@@ -1,0 +1,24 @@
+.page {
+    max-width: 880px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-24);
+}
+
+.loading {
+    color: var(--label-alternative);
+}
+
+.done {
+    padding: var(--space-12) var(--space-16);
+    border-radius: var(--radius-md);
+    background: var(--background-status-positive);
+    color: var(--status-positive);
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-16);
+}

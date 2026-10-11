@@ -1,0 +1,28 @@
+.tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-8);
+}
+
+.tab {
+    height: 40px;
+    padding: 0 var(--space-16);
+    border: 1px solid var(--line-neutral);
+    border-radius: var(--radius-full);
+    background: var(--background-elevated);
+    color: var(--label-neutral);
+}
+
+.tab:hover {
+    background: var(--fill-normal);
+}
+
+.on {
+    border-color: var(--primary-normal);
+    background: var(--primary-normal);
+    color: var(--static-white);
+}
+
+.on:hover {
+    background: var(--primary-strong);
+}

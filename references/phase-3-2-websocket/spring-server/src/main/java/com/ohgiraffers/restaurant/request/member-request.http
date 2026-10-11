@@ -1,0 +1,86 @@
+### 1. 회원가입
+# 비밀번호는 BCrypt 해시로 저장된다. 가입 후 DB 의 tbl_member 를 조회해 확인해 보자.
+POST http://localhost:8080/api/auth/signup
+Content-Type: application/json
+
+{
+  "memberId": "user03",
+  "memberPassword": "user1234",
+  "memberName": "박오지",
+  "memberEmail": "user03@ohgiraffers.com"
+}
+
+### 1-1. 회원가입 실패 (이미 사용 중인 아이디 -> 409)
+POST http://localhost:8080/api/auth/signup
+Content-Type: application/json
+
+{
+  "memberId": "user01",
+  "memberPassword": "user1234",
+  "memberName": "중복회원",
+  "memberEmail": "dup@ohgiraffers.com"
+}
+
+### 1-2. 회원가입 실패 (입력값 검증 실패 -> 400)
+POST http://localhost:8080/api/auth/signup
+Content-Type: application/json
+
+{
+  "memberId": "ab",
+  "memberPassword": "user1234",
+  "memberName": "짧은아이디",
+  "memberEmail": "not-an-email"
+}
+
+### 2. 로그인 (user01) - 응답의 accessToken 을 userToken 변수에 저장한다
+# 아래 '> {% %}' 부분은 IntelliJ HTTP Client 의 응답 스크립트다. 다른 .http 파일에서도 {{userToken}} 으로 쓸 수 있다.
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "memberId": "user01",
+  "memberPassword": "user1234"
+}
+
+> {%
+    client.global.set("userToken", response.body.result.accessToken);
+%}
+
+### 2-1. 로그인 (admin) - 응답의 accessToken 을 adminToken 변수에 저장한다
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "memberId": "admin",
+  "memberPassword": "admin1234"
+}
+
+> {%
+    client.global.set("adminToken", response.body.result.accessToken);
+%}
+
+### 2-2. 로그인 실패 (비밀번호 불일치 -> 401)
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "memberId": "user01",
+  "memberPassword": "wrong-password"
+}
+
+### 3. 내 정보 조회 (토큰 필요)
+# 경로에 회원코드가 없다. 서버가 토큰에서 회원을 꺼낸다.
+GET http://localhost:8080/api/members/me
+Authorization: Bearer {{userToken}}
+
+### 3-1. 토큰 없이 내 정보 조회 (-> 401 로그인이 필요합니다)
+GET http://localhost:8080/api/members/me
+
+### 3-2. 위조된 토큰으로 요청 (-> 401 유효하지 않은 토큰입니다)
+# 토큰의 가운데 부분(페이로드)을 jwt.io 등에서 고쳐 붙여넣으면 서명이 맞지 않아 거절된다.
+GET http://localhost:8080/api/members/me
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwibWVtYmVySWQiOiJhZG1pbiIsInJvbGUiOiJST0xFX0FETUlOIn0.forged-signature
+
+### 3-3. [Phase 1 의 문제점이 막혔는지 확인] 예전 주소로 다른 회원 정보 조회 (-> 404, 주소 자체가 없다)
+GET http://localhost:8080/api/members/1
+Authorization: Bearer {{userToken}}

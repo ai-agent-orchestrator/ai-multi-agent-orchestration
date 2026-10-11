@@ -1,0 +1,69 @@
+### 0. 먼저 member-request.http 의 '2. 로그인'을 실행해 {{userToken}} 을 받아둔다.
+
+### 1. 주문하기 (토큰 필요)
+# 본문에 memberCode 가 없다. 토큰의 주인(user01)이 주문한 것으로 저장된다.
+POST http://localhost:8080/api/orders
+Content-Type: application/json
+Authorization: Bearer {{userToken}}
+
+{
+  "paymentType": "CARD",
+  "items": [
+    { "menuCode": 25, "orderAmount": 1 },
+    { "menuCode": 27, "orderAmount": 1 },
+    { "menuCode": 25, "orderAmount": 2 }
+  ]
+}
+
+### 1-1. 토큰 없이 주문 (-> 401)
+POST http://localhost:8080/api/orders
+Content-Type: application/json
+
+{
+  "paymentType": "CARD",
+  "items": [{ "menuCode": 1, "orderAmount": 1 }]
+}
+
+### 1-2. 주문 실패 (주문 불가 메뉴 포함 -> 400)
+# 5번 메뉴(앙버터김치찜)는 주문 가능 상태가 'N'이다. 전체 주문이 롤백되어 아무것도 저장되지 않는다.
+POST http://localhost:8080/api/orders
+Content-Type: application/json
+Authorization: Bearer {{userToken}}
+
+{
+  "paymentType": "CASH",
+  "items": [
+    { "menuCode": 1, "orderAmount": 1 },
+    { "menuCode": 5, "orderAmount": 1 }
+  ]
+}
+
+### 1-3. 주문 실패 (빈 장바구니 -> 400)
+POST http://localhost:8080/api/orders
+Content-Type: application/json
+Authorization: Bearer {{userToken}}
+
+{
+  "paymentType": "CARD",
+  "items": []
+}
+
+### 2. 내 주문 내역 (최근 주문부터)
+GET http://localhost:8080/api/members/me/orders
+Authorization: Bearer {{userToken}}
+
+### 3. [Phase 1 의 문제점이 막혔는지 확인] 다른 회원(3번)의 이름으로 주문하기
+# 본문에 memberCode: 3 을 넣어도 받을 자리가 없어 무시된다. 주문은 토큰 주인(user01)의 것으로 저장된다.
+POST http://localhost:8080/api/orders
+Content-Type: application/json
+Authorization: Bearer {{userToken}}
+
+{
+  "memberCode": 3,
+  "paymentType": "CARD",
+  "items": [{ "menuCode": 12, "orderAmount": 10 }]
+}
+
+### 3-1. [Phase 1 의 문제점이 막혔는지 확인] 다른 회원의 주문 내역 조회 (-> 404, 주소 자체가 없다)
+GET http://localhost:8080/api/members/3/orders
+Authorization: Bearer {{userToken}}
