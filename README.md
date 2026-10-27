@@ -1,6 +1,6 @@
 # AI Multi-Agent Orchestration
 
-[![Multi-agent architecture: Google, Claude, Codex, NVIDIA and Alibaba/Qwen](assets/diagrams/orchestration-architecture-dark.png)](assets/diagrams/orchestration-architecture-dark.svg)
+[![Multi-agent architecture: Google, Claude, Codex, NVIDIA and Meta/Llama](assets/diagrams/orchestration-architecture-dark.png)](assets/diagrams/orchestration-architecture-dark.svg)
 
 [![Asynchronous execution flow with NVIDIA Guardrails and NemoClaw](assets/diagrams/orchestration-runtime-dark.png)](assets/diagrams/orchestration-runtime-dark.svg)
 
@@ -42,6 +42,8 @@ My backend study is the execution layer for that direction: Java 21, Spring Boot
 | Current backend foundation | Application controls | Authentication · privacy · risk/audit history · cost controls |
 | Planned extension | AI gateway | Python · FastAPI · asynchronous task orchestration |
 | Planned extension | Retrieval | LangChain · RAG |
-| Planned extension | Inference workers | Alibaba Cloud · Qwen |
+| Planned extension | Inference workers | Meta · Llama |
 | Planned deployment | Content guardrails | NVIDIA NeMo Guardrails |
 | Planned extension | Agent execution security | NVIDIA NemoClaw / OpenShell for supported agent runtimes |
+
+The planned inference-worker model is [Meta Llama](https://github.com/meta-llama/llama-models). The exact model version and hosting option remain to be selected and validated. Input/output guardrails, bounded retries, privacy checks, and usage accounting remain part of the proposed runtime regardless of model choice.

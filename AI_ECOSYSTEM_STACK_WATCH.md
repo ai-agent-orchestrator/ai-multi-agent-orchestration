@@ -2,7 +2,7 @@
 
 My current AI workflow is already multi-agent in practice.
 
-## Western Stack
+## Development and Control Stack
 
 ```text
 Gemini (Google AI)
@@ -35,13 +35,14 @@ LangChain / LangGraph / LangSmith
 -> retrieval-grounded legal and medical AI
 ```
 
-## China Stack
+## Planned Inference Workers
 
 ```text
-Alibaba open-code-review
--> cost-cutting reference
--> AI-assisted code review
--> enterprise backend automation
+Meta Llama
+-> planned inference workers
+-> extraction and tagging
+-> summarization and report drafts
+-> self-hosted or approved-provider deployment, subject to validation
 ```
 
 ## Purpose
@@ -85,7 +86,7 @@ agent workflow
 What I will not prioritize first:
 
 ```text
-deep Go implementation details
+model training internals
 full framework internals
 production deployment
 ```
@@ -93,13 +94,13 @@ production deployment
 Learning target:
 
 ```text
-Understand how an enterprise AI code review system structures context,
-rules, diffs, LLM calls, review comments, and security checks.
+Understand how an inference-worker runtime structures context,
+model calls, output validation, usage accounting, and security boundaries.
 ```
 
 ## Comparison Lens
 
-I will compare these ecosystems through the following questions:
+I will evaluate these tools and model deployment options through the following questions:
 
 ```text
 1. What problem does this tool solve?
@@ -124,14 +125,18 @@ NVIDIA Guardrails
 LangChain
 -> RAG and workflow orchestration
 
-Alibaba open-code-review
--> cost-efficient AI-assisted code review and enterprise backend automation
+Meta Llama
+-> planned inference workers for extraction, summarization, and report drafts
 ```
 
 One-line positioning:
 
 ```text
-I track Western and Chinese AI engineering ecosystems
-to compare agentic development, guardrails, RAG orchestration,
-and enterprise AI code review patterns.
+I evaluate development agents, guardrails, RAG orchestration,
+and Llama-based inference workers as separate layers
+of a controlled and observable AI backend.
 ```
+
+## Model Selection and Validation
+
+The planned worker model is [Meta Llama](https://github.com/meta-llama/llama-models). This is an architecture direction, not a completed deployment or a claim that model origin guarantees security. Before use, select the model/version and hosting option, review license and artifact provenance, restrict data access and network egress, and test prompt-injection handling, output privacy, and cost limits.

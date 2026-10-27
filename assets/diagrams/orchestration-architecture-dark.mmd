@@ -16,11 +16,11 @@ flowchart TB
         InputRails["NVIDIA NeMo Guardrails<br/>Input Content Checks"]
         Queue["Task Queue<br/>Bounded Jobs and Retries"]
         Sandbox["NVIDIA NemoClaw / OpenShell<br/>Supported Agent + Tool Sandbox"]
-        subgraph Workers["ALIBABA CLOUD / QWEN - EXECUTION WORKERS"]
+        subgraph Workers["META / LLAMA - EXECUTION WORKERS"]
             direction LR
-            W1["Qwen Worker<br/>Extraction and Tags"]
-            W2["Qwen Worker<br/>Summarization"]
-            W3["Qwen Worker<br/>Report Drafts"]
+            W1["Llama Worker<br/>Extraction and Tags"]
+            W2["Llama Worker<br/>Summarization"]
+            W3["Llama Worker<br/>Report Drafts"]
         end
         Validate["Validation and Usage Accounting<br/>Results, Trace and Cost"]
         OutputRails["NVIDIA NeMo Guardrails<br/>Output Content Checks"]
