@@ -1,0 +1,63 @@
+flowchart TB
+    subgraph Intake["LOCAL INTAKE"]
+        direction LR
+        X["Social bookmarks and reposts<br/>Official read-only API"]
+        YT["Selected public videos<br/>Chosen by the owner"]
+        Chat["AI chat exports<br/>Local files"]
+    end
+
+    subgraph Gate["SAFETY AND COST GATE"]
+        direction LR
+        Mask["PII masking<br/>Names, case numbers, keys"]
+        Inject["Prompt-injection check<br/>Untrusted text is data"]
+        Budget["Cost ledger and hard caps<br/>Reserve before every paid call"]
+    end
+
+    subgraph Memory["LOCAL MEMORY - NEVER LEAVES THE DEVICE"]
+        direction LR
+        Local["Small local model<br/>Classify and extract keywords"]
+        Check["Code validation<br/>Counts, lengths, copy limits"]
+        Cards["memvid cards<br/>Category, keywords, source link"]
+        Local --> Check --> Cards
+    end
+
+    Pack["Research pack<br/>Public keywords and links only<br/>Summary text off unless switched on<br/>Legal and personal data excluded"]
+    Preview["What leaves this device<br/>One-line preview before sending"]
+    Review{"Owner review<br/>Edit, select, approve"}
+    Search["Google AI Mode<br/>Broad, current research"]
+    Verify["Claude<br/>Re-verify factual claims<br/>Check sources and gaps"]
+    Output["Owner synthesis<br/>Notes, calendar and task items"]
+    Stop["Stopped<br/>Over budget or not approved<br/>Nothing is sent"]
+
+    X --> Mask
+    YT --> Mask
+    Chat --> Mask
+    Mask --> Inject --> Budget
+    Budget -->|"Within caps"| Local
+    Budget -.->|"Over cap"| Stop
+    Cards --> Pack --> Preview --> Review
+    Review -->|"Approved"| Search
+    Review -.->|"Rejected"| Stop
+    Search --> Verify --> Output
+
+    classDef strategy fill:#173b3e,stroke:#66cfc8,stroke-width:2px,color:#e6edf6
+    classDef architecture fill:#342a4c,stroke:#b39ae5,stroke-width:2px,color:#e6edf6
+    classDef engineering fill:#18344b,stroke:#5ba7db,stroke-width:2px,color:#e6edf6
+    classDef python fill:#26313d,stroke:#a1afbf,stroke-width:2px,color:#e6edf6
+    classDef guard fill:#263c17,stroke:#91cc45,stroke-width:3px,color:#efffdc
+    classDef worker fill:#4b2b22,stroke:#d39a6a,stroke-width:3px,color:#fff0e6
+    classDef control fill:#42351e,stroke:#ddb965,stroke-width:2px,color:#e6edf6
+    classDef result fill:#1a2837,stroke:#78d5ef,stroke-width:2px,color:#e6edf6
+    classDef stop fill:#40282d,stroke:#c58b92,stroke-width:2px,color:#e6edf6
+    class X,YT,Chat engineering
+    class Mask,Inject,Budget,Check guard
+    class Local worker
+    class Cards python
+    class Pack,Preview,Review control
+    class Search strategy
+    class Verify architecture
+    class Output result
+    class Stop stop
+    style Intake fill:#141f2c,stroke:#455f79,stroke-width:1.5px,color:#c9d8eb
+    style Gate fill:#141f2c,stroke:#455f79,stroke-width:1.5px,color:#c9d8eb
+    style Memory fill:#141f2c,stroke:#455f79,stroke-width:1.5px,color:#c9d8eb
