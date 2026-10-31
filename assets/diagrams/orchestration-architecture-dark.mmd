@@ -1,38 +1,42 @@
 flowchart TB
     subgraph Development["DEVELOPMENT WORKFLOW"]
         direction LR
-        Google["Google / Gemini<br/>Business and Product Strategy"]
-        Claude["Claude<br/>Architecture Review and Refactoring"]
-        Codex["Codex<br/>Engineering Lead<br/>End-to-End Coding & Integration"]
-        Google -->|"Requirements"| Claude
-        Claude -->|"Design and Contracts"| Codex
+        Owner["Owner<br/>Decisions and Prompt Review"]
+        Google["Google AI Mode<br/>Broad, Current Research"]
+        Claude["Claude<br/>Harness Design, Review<br/>and Verification"]
+        Codex["Codex<br/>Coder<br/>Implements Specs, Nightly Runs"]
+        Owner -->|"Approves research packs"| Google
+        Google -->|"Findings"| Claude
+        Claude -->|"Specs and Contracts"| Codex
+        Owner -.->|"Confirms decisions"| Claude
     end
 
-    Codex -.-> Python
+    Codex -.-> Spring
 
-    subgraph Runtime["PLANNED RUNTIME"]
+    subgraph Runtime["RUNTIME DESIGN"]
         direction TB
+        Spring["Spring Boot Control Plane<br/>Authorization, Policy and Cost Ledger"]
         Python["Python FastAPI Orchestrator<br/>Dispatch, Concurrency and Budget"]
-        InputRails["NVIDIA NeMo Guardrails<br/>Input Content Checks"]
+        Mask["Masking and Injection Checks<br/>Own code, before any model"]
+        InputRails["NVIDIA NeMo Guardrails - planned<br/>Input Content Checks"]
         Queue["Task Queue<br/>Bounded Jobs and Retries"]
-        Sandbox["NVIDIA NemoClaw / OpenShell<br/>Supported Agent + Tool Sandbox"]
-        subgraph Workers["META / LLAMA - EXECUTION WORKERS"]
+        Memory["memvid Memory<br/>Authorized, Source-Linked Evidence"]
+        Sandbox["NVIDIA NemoClaw / OpenShell - planned<br/>Supported Agent + Tool Sandbox"]
+        subgraph Workers["EXECUTION WORKERS"]
             direction LR
-            W1["Llama Worker<br/>Extraction and Tags"]
-            W2["Llama Worker<br/>Summarization"]
-            W3["Llama Worker<br/>Report Drafts"]
+            W1["Local Small Model<br/>Classify and Tag"]
+            W2["Approved Cloud Model<br/>Research and Verification"]
         end
         Validate["Validation and Usage Accounting<br/>Results, Trace and Cost"]
-        OutputRails["NVIDIA NeMo Guardrails<br/>Output Content Checks"]
-        Python --> InputRails -->|"Allowed"| Queue
+        OutputRails["NVIDIA NeMo Guardrails - planned<br/>Output Content Checks"]
+        Spring --> Python --> Mask --> InputRails -->|"Allowed"| Queue
+        Queue --> Memory
+        Memory --> W1
+        Memory --> W2
         Queue -.->|"Agent Tasks Only"| Sandbox
         Sandbox -.-> W2
-        Queue --> W1
-        Queue --> W2
-        Queue --> W3
         W1 --> OutputRails
         W2 --> OutputRails
-        W3 --> OutputRails
         OutputRails -->|"Allowed"| Validate
     end
 
@@ -40,17 +44,20 @@ flowchart TB
     classDef architecture fill:#342a4c,stroke:#b39ae5,stroke-width:2px,color:#e6edf6
     classDef engineering fill:#18344b,stroke:#5ba7db,stroke-width:2px,color:#e6edf6
     classDef python fill:#26313d,stroke:#a1afbf,stroke-width:2px,color:#e6edf6
+    classDef java fill:#1f3320,stroke:#8fcf86,stroke-width:2px,color:#e6edf6
     classDef nvidia fill:#263c17,stroke:#91cc45,stroke-width:3px,color:#efffdc
     classDef worker fill:#4b2b22,stroke:#d39a6a,stroke-width:3px,color:#fff0e6
     classDef control fill:#42351e,stroke:#ddb965,stroke-width:2px,color:#e6edf6
     classDef result fill:#1a2837,stroke:#78d5ef,stroke-width:2px,color:#e6edf6
+    class Owner control
     class Google strategy
     class Claude architecture
     class Codex engineering
-    class Python python
-    class InputRails,OutputRails,Sandbox nvidia
+    class Spring java
+    class Python,Memory python
+    class Mask,InputRails,OutputRails,Sandbox nvidia
     class Queue control
-    class W1,W2,W3 worker
+    class W1,W2 worker
     class Validate result
     style Development fill:#141f2c,stroke:#455f79,stroke-width:1.5px,color:#c9d8eb
     style Runtime fill:#141f2c,stroke:#455f79,stroke-width:1.5px,color:#c9d8eb
