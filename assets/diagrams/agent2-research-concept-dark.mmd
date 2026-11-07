@@ -1,0 +1,47 @@
+flowchart TB
+  subgraph IN["LOCAL INTAKE · READ-ONLY, OFFICIAL ROUTES"]
+    direction LR
+    X["X bookmarks, lists"] ~~~ YT["Selected YouTube"] ~~~ CH["AI chat exports<br/>30-40 page drafts"] ~~~ NT["Notes + ideas"]
+  end
+  subgraph GT["SAFETY AND COST GATE · SHARED WITH LEGAL INTAKE"]
+    direction LR
+    M["PII masking<br/>mask_personal_data"] ~~~ I["Injection check<br/>check_input_policy"] ~~~ B["Cost ledger<br/>hard caps"]
+  end
+  subgraph EQ["EDGE EQUALIZER · LANGCHAIN + LANGGRAPH · STAYS ON THE DEVICE"]
+    direction LR
+    E1["Ontology parser<br/>hypothesis · architecture<br/>market · constraint · action"] --> E2["Hybrid search<br/>BM25/TF-IDF + E5<br/>memvid"] --> E3["Knob 1 · spear<br/>similarity threshold<br/>top 30 → rerank"] --> E4["Knob 2 · shield<br/>edge weight<br/>cliche penalty"] --> E5{"Token check<br/>fits Llama window?"}
+    E5 -->|"over"| E6["Token diet<br/>lowest-priority first<br/>protected never dropped"]
+    E6 --> E5
+    E5 -->|"fits"| E7["Edge brief<br/>golden phrases<br/>logic skeleton · source IDs"]
+  end
+  subgraph RV["REVIEWED RESEARCH · OWNER IN THE LOOP"]
+    direction LR
+    L["Local Llama<br/>backbone summary<br/>output checks"] --> P["Research pack<br/>public keywords + links<br/>one-line preview"] --> R{"Owner review<br/>approve?"} -->|"yes"| S["Google AI Mode<br/>broad research"] --> V["Claude<br/>re-verify claims"] --> OUT["Board, Calendar<br/>Tasks"]
+  end
+  LS["LangSmith · trace + edge-recall evals · allowlisted fields only"]
+  IN --> GT --> EQ --> RV
+  EQ -.-> LS
+  classDef strategy fill:#173b3e,stroke:#66cfc8,stroke-width:2px,color:#e6edf6
+  classDef architecture fill:#342a4c,stroke:#b39ae5,stroke-width:2px,color:#e6edf6
+  classDef engineering fill:#18344b,stroke:#5ba7db,stroke-width:2px,color:#e6edf6
+  classDef python fill:#26313d,stroke:#a1afbf,stroke-width:2px,color:#e6edf6
+  classDef guard fill:#263c17,stroke:#91cc45,stroke-width:3px,color:#e6edf6
+  classDef worker fill:#4b2b22,stroke:#d39a6a,stroke-width:3px,color:#e6edf6
+  classDef control fill:#42351e,stroke:#ddb965,stroke-width:2px,color:#e6edf6
+  classDef result fill:#1a2837,stroke:#78d5ef,stroke-width:2px,color:#e6edf6
+  classDef stop fill:#40282d,stroke:#c58b92,stroke-width:2px,color:#e6edf6
+  classDef extension fill:#141f2c,stroke:#8aa0b8,stroke-width:2px,stroke-dasharray:6 4,color:#c9d8eb
+  class X,YT,CH,NT python;
+  class M,I,B,LS guard;
+  class E1,E7 architecture;
+  class E2 python;
+  class E3,E4,E5 control;
+  class E6,L worker;
+  class P,R control;
+  class S strategy;
+  class V architecture;
+  class OUT result;
+  style IN fill:#141f2c,stroke:#455f79,stroke-width:1.5px,color:#c9d8eb
+  style GT fill:#141f2c,stroke:#455f79,stroke-width:1.5px,color:#c9d8eb
+  style EQ fill:#141f2c,stroke:#455f79,stroke-width:1.5px,color:#c9d8eb
+  style RV fill:#141f2c,stroke:#455f79,stroke-width:1.5px,color:#c9d8eb

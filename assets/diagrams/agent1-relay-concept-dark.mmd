@@ -1,0 +1,44 @@
+flowchart TB
+  subgraph IN["SPECS"]
+    direction LR
+    C["Claude CTO<br/>design, contracts, specs"] ~~~ O["Owner<br/>specs and approvals"]
+  end
+  subgraph GW["AGENT RISK + COST GATEWAY · SHARED MODULE"]
+    direction LR
+    G1["Pinned design<br/>hash-checked"] ~~~ G2["Every message<br/>mask · injection · size cap"] ~~~ G3["Allowed actions only<br/>no push · no remotes<br/>no test deletion"] ~~~ G4["Limits + credit plan<br/>rounds · minutes · calls"]
+  end
+  subgraph LANES["CODER LANES · SUBSCRIPTION ONLY"]
+    direction LR
+    L1["Codex CLI<br/>builder"] <-.->|"builder ⇄ reviewer"| L2["Claude Code CLI<br/>builder or reviewer"]
+  end
+  VR["Verify, never trust the report<br/>committed · remotes unchanged · diff guard · full tests re-run"]
+  V{"Gates pass?"}
+  OUT["outbox patches + REPORT.md<br/>one status page"]
+  H["Owner reviews<br/>merge by pull request"]
+  F["Fix once, then roll back<br/>lane stops"]
+  Q["Design question<br/>human decides"]
+  IN --> GW --> LANES --> VR --> V
+  V -->|"pass"| OUT --> H
+  V -->|"fail"| F
+  GW -.->|"design drift"| Q
+  classDef strategy fill:#173b3e,stroke:#66cfc8,stroke-width:2px,color:#e6edf6
+  classDef architecture fill:#342a4c,stroke:#b39ae5,stroke-width:2px,color:#e6edf6
+  classDef engineering fill:#18344b,stroke:#5ba7db,stroke-width:2px,color:#e6edf6
+  classDef python fill:#26313d,stroke:#a1afbf,stroke-width:2px,color:#e6edf6
+  classDef guard fill:#263c17,stroke:#91cc45,stroke-width:3px,color:#e6edf6
+  classDef worker fill:#4b2b22,stroke:#d39a6a,stroke-width:3px,color:#e6edf6
+  classDef control fill:#42351e,stroke:#ddb965,stroke-width:2px,color:#e6edf6
+  classDef result fill:#1a2837,stroke:#78d5ef,stroke-width:2px,color:#e6edf6
+  classDef stop fill:#40282d,stroke:#c58b92,stroke-width:2px,color:#e6edf6
+  classDef extension fill:#141f2c,stroke:#8aa0b8,stroke-width:2px,stroke-dasharray:6 4,color:#c9d8eb
+  class C architecture;
+  class O control;
+  class G1,G2,G3,G4 guard;
+  class L1,L2 worker;
+  class VR engineering;
+  class V,Q control;
+  class OUT,H result;
+  class F stop;
+  style IN fill:#141f2c,stroke:#455f79,stroke-width:1.5px,color:#c9d8eb
+  style GW fill:#141f2c,stroke:#455f79,stroke-width:1.5px,color:#c9d8eb
+  style LANES fill:#141f2c,stroke:#455f79,stroke-width:1.5px,color:#c9d8eb

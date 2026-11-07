@@ -35,11 +35,11 @@ LangChain / LangGraph / LangSmith
 -> retrieval-grounded legal and medical AI
 ```
 
-## Planned Inference Workers
+## Inference Workers (Extension)
 
 ```text
 Meta Llama
--> planned inference workers
+-> inference workers (extension)
 -> extraction and tagging
 -> summarization and report drafts
 -> self-hosted or approved-provider deployment, subject to validation
@@ -126,7 +126,7 @@ LangChain
 -> RAG and workflow orchestration
 
 Meta Llama
--> planned inference workers for extraction, summarization, and report drafts
+-> inference workers (extension) for extraction, summarization, and report drafts
 ```
 
 One-line positioning:
@@ -139,4 +139,4 @@ of a controlled and observable AI backend.
 
 ## Model Selection and Validation
 
-The planned worker model is [Meta Llama](https://github.com/meta-llama/llama-models). This is an architecture direction, not a completed deployment or a claim that model origin guarantees security. Before use, select the model/version and hosting option, review license and artifact provenance, restrict data access and network egress, and test prompt-injection handling, output privacy, and cost limits.
+The worker model for this extension is [Meta Llama](https://github.com/meta-llama/llama-models). This is an architecture direction, not a completed deployment or a claim that model origin guarantees security. Before use, select the model/version and hosting option, review license and artifact provenance, restrict data access and network egress, and test prompt-injection handling, output privacy, and cost limits.

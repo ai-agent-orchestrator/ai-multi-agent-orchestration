@@ -6,7 +6,7 @@
 
 *Proposed orchestration architecture and runtime flow.*
 
-A portfolio hub for designing, building and verifying **multi-agent system harnesses**: role separation between models, safety and cost gates, privacy masking and a replaceable memory layer. The designs below are in active development. Status labels in each table state what is implemented, what is a design, and what is still planned.
+A portfolio hub for designing, building and verifying **multi-agent system harnesses**: role separation between models, safety and cost gates, privacy masking and a replaceable memory layer. The designs below are in active development. Status labels in each table state what is implemented, what is a design, and what is an extension.
 
 ## Who am I
 
@@ -34,24 +34,71 @@ At the current stage, I am especially focused on the Legal/Medical part because 
 
 My backend study is the execution layer for that direction: Java 21, Spring Boot REST APIs, JSON contracts, Virtual Threads, monitoring, observability, and the FastAPI, memvid and guardrail integration described below.
 
-## Research Harness Design
+## Two Multi-Agent Systems
 
-One of the harnesses under development turns scattered reading (social bookmarks, selected videos, AI chat exports) into reviewed research, while keeping private data on the device and spending under a hard cap.
+Two products run on one PC behind one shared risk and cost layer. **Multi-agent 1 builds code overnight; multi-agent 2 turns reading and long AI-chat drafts into reviewed research without flattening the owner's original ideas.**
 
-[![Research harness flow: local intake, safety and cost gate, local memory, reviewed research pack, verification](assets/diagrams/research-harness-flow-dark.png)](assets/diagrams/research-harness-flow-dark.svg)
+[![Two multi-agent products: owner and design loop on top, NightCoder Relay and Draft to Done with the Edge Equalizer in the middle, the shared risk and cost layer underneath](assets/diagrams/multi-agents-overview-dark.png)](assets/diagrams/multi-agents-overview-dark.svg)
 
-*Research harness flow. Intake is local; masking, injection checks and cost caps run before any model call; memory stays on the device; the owner reviews what leaves the device.*
+*Layers stack top to bottom. Results flow back up as pull requests (Relay) and reviewed research packs (Draft to Done); those return arrows are left out to keep the layers readable.*
 
-| Control | How the design handles it |
+| | Multi-agent 1 · NightCoder Relay | Multi-agent 2 · Draft to Done + Edge Equalizer |
+| --- | --- | --- |
+| Job | queue specs, run subscription coder CLIs overnight, verify the work | digest feeds and 30–40 page AI-chat drafts into a brief, a research pack and a daily board |
+| Agents | Claude (CTO, specs) · Codex CLI · Claude Code CLI | local Llama · Google AI Mode · Claude (verification) |
+| Core idea | never trust the coder's report: re-run the tests, guard the diff, never push | two knobs instead of dozens of settings: **spear** (similarity threshold) finds, **shield** (edge preservation weight) keeps the original ideas |
+| Human step | review and merge by pull request | approve what leaves the device, ask the questions in AI Mode |
+| Status | built, offline tests green | pipeline built and offline-tested; Edge Equalizer engine at prototype parts |
+
+### Multi-agent 1 · NightCoder Relay
+
+Claude or the owner writes specs. The relay hands them to a coder CLI one by one through the risk and cost gateway, re-checks everything the coder claims, and returns patches with a report.
+
+**Concept design**
+
+[![Relay concept: specs, the agent risk and cost gateway, coder lanes, verification, outbox and owner merge](assets/diagrams/agent1-relay-concept-dark.png)](assets/diagrams/agent1-relay-concept-dark.svg)
+
+**Current prototype**
+
+[![Relay prototype: what is built and tested offline, and the extension steps](assets/diagrams/agent1-relay-prototype-dark.png)](assets/diagrams/agent1-relay-prototype-dark.svg)
+
+| Built (offline tests) | Extension |
 | --- | --- |
-| Roles | A small local model filters and tags. Google AI Mode performs broad, current research. Claude re-verifies factual claims and checks sources. The owner reviews and approves every outbound pack. |
-| Security | Intake uses official read-only access. Fetched text is treated as untrusted data and checked for prompt injection. Code, not the model, validates every model output. |
-| Privacy | Names, case numbers and keys are masked before any model sees the text. Legal and personal material is never part of an outbound pack. |
-| Cost | A cost ledger reserves budget before each paid call and enforces hard caps. Over-cap work stops instead of retrying. |
-| Memory | Compact cards (category, keywords, source link) live in a local memvid memory layer behind a single function boundary, so it can be replaced without touching callers. |
-| Data minimization | Outbound packs contain public keywords and links by default. Summary text is off unless explicitly switched on, and a one-line preview shows what leaves the device. |
+| Start-plan wizard and credit-aware scheduler (N9b–d) | N8 Codex ⇄ Claude Code builder-reviewer loop through the gateway |
+| Spec headers, parallel lanes, `after:` dependencies (N5–N6) | Claude coder with a verified subscription login (runs use `coder: codex` today) |
+| Subscription-only coders, clean environment, unsafe-spec refusal, hard caps, screen guard (N9a–f) | Two unattended nights on real accounts |
+| Gates 1–4, one fix round, rollback, outbox, status page (N1–N7) | Agent Risk Gateway extracted as a shared module |
 
-**Status:** design and development in progress. The test suite passes on the author's Windows PC (465 tests, 2026-10-30); runs against real accounts and services are not yet verified. Details: [nightcoder](https://github.com/ai-agent-orchestrator/nightcoder).
+### Multi-agent 2 · Draft to Done + Edge Equalizer
+
+Long brainstorming drafts carry the owner's sharpest ideas, and ordinary summarization flattens them into clichés. The Edge Equalizer is a LangChain + LangGraph retrieval engine that sits between the safety gate and the local Llama: it parses the draft into an ontology, searches with keywords and vectors, and builds a brief that fits the model's window without dropping protected ideas.
+
+**Concept design**
+
+[![Draft to Done concept: local intake, shared safety gate, Edge Equalizer with two knobs and token diet, local Llama, owner review, Google AI Mode, Claude verification](assets/diagrams/agent2-research-concept-dark.png)](assets/diagrams/agent2-research-concept-dark.svg)
+
+| Knob | Low | High |
+| --- | --- | --- |
+| 1 · Spear: similarity threshold | broad exploration, distant connections | precise, only closely matching passages |
+| 2 · Shield: edge preservation weight | readable summary in ontology order | extract-only, golden phrases first, clichés cut |
+
+Presets combine the two: **research and idea fusion** (spear low, shield high) and **evidence analysis** (spear high, shield high). Thresholds are calibrated per embedding model on a golden set, not fixed numbers. Everything else (token budget, protection rules, score weights) is versioned configuration, not a knob.
+
+**Current prototype**
+
+[![Draft to Done prototype: built pipeline, engine prototype parts and extension steps](assets/diagrams/agent2-research-prototype-dark.png)](assets/diagrams/agent2-research-prototype-dark.svg)
+
+| Built or measured | Extension |
+| --- | --- |
+| Draft to Done pipeline: inputs, redaction, local summaries, tiers, tables, AI Mode pack, board, Calendar and Tasks (offline tests) | Ontology parser with causal links |
+| Real E5 + memvid retrieval on a synthetic set: vector Hit@1 6/6, Hit@3 6/6 ([legal-intake-fastapi-lab](https://github.com/ai-agent-orchestrator/legal-intake-fastapi-lab), B02b) | Two knobs, presets and calibrated thresholds |
+| Engine package skeleton with synthetic tests ([langchain-rag-research-agent](https://github.com/ai-agent-orchestrator/python-memvid-guardrail), renaming from python-memvid-guardrail) | Edge scorer and reranking |
+| Long-prompt brief prototype: hybrid recall 0.943 vs 0.0 for head truncation, fake embedder on 41.6 synthetic pages | LangGraph token diet and LangSmith edge-recall evaluation |
+| | Engine wired into Draft to Done in place of the compression step; real-account runs |
+
+The earlier research-harness flow ([diagram](assets/diagrams/research-harness-flow-dark.svg)) is the intake and review shell that this design keeps.
+
+**Status:** design and development in progress. Both products pass their test suite on the author's Windows PC (465 tests, 2026-10-30); runs against real accounts and services are not yet verified. Details: [nightcoder](https://github.com/ai-agent-orchestrator/nightcoder).
 
 ## Implementation and Extension Plan
 
@@ -65,15 +112,16 @@ The foundation below is implemented at demo scope. Everything under "Extension" 
 | Foundation | Application controls | Authentication · privacy output guard · risk and audit history · cost controls | Implemented (demo scope) |
 | Extension | Async execution | Spring Boot virtual threads with bulkhead and circuit breaker; FastAPI asyncio with cancel-safe billing; measured before and after | Design and phase specs, measurements pending, [spring-fastapi-async-refactor](https://github.com/ai-agent-orchestrator/spring-fastapi-async-refactor) |
 | Extension | Memory layer | Spring authorizes, FastAPI executes, memvid remembers: case-level memory files, authorization before file access, source-linked evidence | Architecture proposal, integration and production security not yet validated, [spring-memvid-ai-backend](https://github.com/ai-agent-orchestrator/spring-memvid-ai-backend) |
-| Extension | Research harness | Local intake, masking, cost ledger, local cards, reviewed research packs (see above) | In development, [nightcoder](https://github.com/ai-agent-orchestrator/nightcoder) |
-| Extension | Overnight relay harness | Spec inbox, lanes, scheduler, gates, subscription-only coding agents, hard daily caps | In development, [nightcoder](https://github.com/ai-agent-orchestrator/nightcoder) |
-| Extension | Legal intake product | Spring Boot + FastAPI hybrid with memvid memory; commercialization planned | In development, [legal-ai-intake-system](https://github.com/ai-agent-orchestrator/legal-ai-intake-system) |
-| Planned | Shared harness core | Extract the common layer (role contracts, safety and cost gates, masking, memory boundary) so new domain modules attach to it | Planned |
-| Planned | Content guardrails | NVIDIA NeMo Guardrails | Planned deployment |
-| Planned | Agent execution security | NVIDIA NemoClaw / OpenShell for supported agent runtimes | Planned |
-| Planned | Inference workers | Meta Llama | Model version and hosting to be selected and validated |
+| Extension | Multi-agent 2 · Draft to Done | Local intake, masking, cost ledger, local cards, reviewed research packs (see above) | In development, [nightcoder](https://github.com/ai-agent-orchestrator/nightcoder) |
+| Extension | Multi-agent 2 · Edge Equalizer engine | Ontology parsing, keyword + vector search, two knobs, LangGraph token diet, LangSmith evaluation | Design reviewed, prototype parts, [langchain-rag-research-agent](https://github.com/ai-agent-orchestrator/python-memvid-guardrail) |
+| Extension | Multi-agent 1 · NightCoder Relay | Spec inbox, lanes, scheduler, gates, subscription-only coding agents, hard daily caps | In development, [nightcoder](https://github.com/ai-agent-orchestrator/nightcoder) |
+| Extension | Legal intake product | Spring Boot + FastAPI hybrid with memvid memory; commercialization as an extension | In development, [legal-ai-intake-system](https://github.com/ai-agent-orchestrator/legal-ai-intake-system) |
+| Extension | Shared harness core | Extract the common layer (role contracts, safety and cost gates, masking, memory boundary) so new domain modules attach to it | Extension |
+| Extension | Content guardrails | NVIDIA NeMo Guardrails | Extension |
+| Extension | Agent execution security | NVIDIA NemoClaw / OpenShell for supported agent runtimes | Extension |
+| Extension | Inference workers | Meta Llama | Model version and hosting to be selected and validated |
 
-The planned inference-worker model is [Meta Llama](https://github.com/meta-llama/llama-models). The exact model version and hosting option remain to be selected and validated. Input/output guardrails, bounded retries, privacy checks, and usage accounting remain part of the proposed runtime regardless of model choice.
+The inference-worker model for this extension is [Meta Llama](https://github.com/meta-llama/llama-models). The exact model version and hosting option remain to be selected and validated. Input/output guardrails, bounded retries, privacy checks, and usage accounting remain part of the proposed runtime regardless of model choice.
 
 ## Direction
 

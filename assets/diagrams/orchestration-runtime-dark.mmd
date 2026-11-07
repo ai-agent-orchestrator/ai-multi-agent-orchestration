@@ -7,8 +7,8 @@ flowchart TB
     Code["Ordinary Code<br/>Sort, Format and Aggregate"]
     Gate{"Budget + Capacity<br/>Available?"}
     Queue["Task Queue<br/>Controlled Concurrency"]
-    InputRails["NVIDIA NeMo Guardrails - planned<br/>Input Checks"]
-    Sandbox["NVIDIA NemoClaw / OpenShell - planned<br/>Supported Agent Sandbox"]
+    InputRails["NVIDIA NeMo Guardrails - extension<br/>Input Checks"]
+    Sandbox["NVIDIA NemoClaw / OpenShell - extension<br/>Supported Agent Sandbox"]
     Memory["memvid Memory<br/>Authorized, Source-Linked Evidence"]
     Worker["Model Worker<br/>Local small model or approved cloud model"]
     Usage["Record Every Attempt<br/>Usage or Estimated / Pending Cost"]
@@ -16,7 +16,7 @@ flowchart TB
     Retry{"Retry<br/>Allowed?"}
     Review["Stop / Defer<br/>Record Status for Review"]
     Save["Store Validated Results<br/>Source References and Trace"]
-    OutputRails["NVIDIA NeMo Guardrails - planned<br/>Output Checks"]
+    OutputRails["NVIDIA NeMo Guardrails - extension<br/>Output Checks"]
     Return["Return to Spring Boot<br/>Output Checks, Privacy, Accounting"]
 
     Start --> Prepare --> Mask --> Type

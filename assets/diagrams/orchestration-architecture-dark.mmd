@@ -18,17 +18,17 @@ flowchart TB
         Spring["Spring Boot Control Plane<br/>Authorization, Policy and Cost Ledger"]
         Python["Python FastAPI Orchestrator<br/>Dispatch, Concurrency and Budget"]
         Mask["Masking and Injection Checks<br/>Own code, before any model"]
-        InputRails["NVIDIA NeMo Guardrails - planned<br/>Input Content Checks"]
+        InputRails["NVIDIA NeMo Guardrails - extension<br/>Input Content Checks"]
         Queue["Task Queue<br/>Bounded Jobs and Retries"]
         Memory["memvid Memory<br/>Authorized, Source-Linked Evidence"]
-        Sandbox["NVIDIA NemoClaw / OpenShell - planned<br/>Supported Agent + Tool Sandbox"]
+        Sandbox["NVIDIA NemoClaw / OpenShell - extension<br/>Supported Agent + Tool Sandbox"]
         subgraph Workers["EXECUTION WORKERS"]
             direction LR
             W1["Local Small Model<br/>Classify and Tag"]
             W2["Approved Cloud Model<br/>Research and Verification"]
         end
         Validate["Validation and Usage Accounting<br/>Results, Trace and Cost"]
-        OutputRails["NVIDIA NeMo Guardrails - planned<br/>Output Content Checks"]
+        OutputRails["NVIDIA NeMo Guardrails - extension<br/>Output Content Checks"]
         Spring --> Python --> Mask --> InputRails -->|"Allowed"| Queue
         Queue --> Memory
         Memory --> W1

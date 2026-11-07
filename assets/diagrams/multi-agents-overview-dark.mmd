@@ -1,0 +1,59 @@
+flowchart TB
+  subgraph OWN["TOP · OWNER + DESIGN LOOP"]
+    direction LR
+    G["Google AI Mode<br/>broad, current research"] -->|"findings"| C["Claude<br/>CTO: design, specs, verification"]
+    O["Owner<br/>decisions, review, merge"]
+  end
+  subgraph AG["MIDDLE · TWO MULTI-AGENT PRODUCTS ON ONE PC"]
+    direction LR
+    subgraph A1["MULTI-AGENT 1 · NIGHTCODER RELAY"]
+      direction TB
+      R1["Spec inbox<br/>lanes + scheduler"]
+      R2["Codex / Claude Code<br/>coder CLIs"]
+      R3["Gates + REPORT.md<br/>outbox, status page"]
+      R1 --> R2 --> R3
+    end
+    subgraph A2["MULTI-AGENT 2 · DRAFT TO DONE + EDGE EQUALIZER"]
+      direction TB
+      D1["Feeds + 30-40 page<br/>AI chat drafts"]
+      D2["Edge Equalizer<br/>vector + keyword search<br/>knob 1 spear · knob 2 shield"]
+      D3["Llama brief, board<br/>AI Mode pack, alarms"]
+      D1 --> D2 --> D3
+    end
+    D2 -.->|"extension:<br/>long-design brief"| R1
+  end
+  subgraph SH["BOTTOM · SHARED RISK + COST LAYER · ENFORCED BY CODE"]
+    direction LR
+    S1["Masking + leak scan"]
+    S2["Injection checks<br/>untrusted text is data"]
+    S3["Caps + budgets<br/>no extra payment"]
+    S4["Human gates<br/>sensitive text, merge"]
+  end
+  C -->|"specs"| R1
+  O -->|"approves packs"| D3
+  A1 --> SH
+  A2 --> SH
+  classDef strategy fill:#173b3e,stroke:#66cfc8,stroke-width:2px,color:#e6edf6
+  classDef architecture fill:#342a4c,stroke:#b39ae5,stroke-width:2px,color:#e6edf6
+  classDef engineering fill:#18344b,stroke:#5ba7db,stroke-width:2px,color:#e6edf6
+  classDef python fill:#26313d,stroke:#a1afbf,stroke-width:2px,color:#e6edf6
+  classDef guard fill:#263c17,stroke:#91cc45,stroke-width:3px,color:#e6edf6
+  classDef worker fill:#4b2b22,stroke:#d39a6a,stroke-width:3px,color:#e6edf6
+  classDef control fill:#42351e,stroke:#ddb965,stroke-width:2px,color:#e6edf6
+  classDef result fill:#1a2837,stroke:#78d5ef,stroke-width:2px,color:#e6edf6
+  classDef stop fill:#40282d,stroke:#c58b92,stroke-width:2px,color:#e6edf6
+  classDef extension fill:#141f2c,stroke:#8aa0b8,stroke-width:2px,stroke-dasharray:6 4,color:#c9d8eb
+  class O control;
+  class G strategy;
+  class C architecture;
+  class S1,S2,S3,S4 guard;
+  class R1,R3 engineering;
+  class R2 worker;
+  class D1 python;
+  class D2 worker;
+  class D3 result;
+  style OWN fill:#141f2c,stroke:#455f79,stroke-width:1.5px,color:#c9d8eb
+  style AG fill:#141f2c,stroke:#455f79,stroke-width:1.5px,color:#c9d8eb
+  style A1 fill:#141f2c,stroke:#455f79,stroke-width:1.5px,color:#c9d8eb
+  style A2 fill:#141f2c,stroke:#455f79,stroke-width:1.5px,color:#c9d8eb
+  style SH fill:#141f2c,stroke:#455f79,stroke-width:1.5px,color:#c9d8eb
