@@ -1,0 +1,54 @@
+flowchart TB
+  subgraph BUILT["DRAFT TO DONE · BUILT, OFFLINE TESTS GREEN (465, 2026-10-30, BOTH PRODUCTS)"]
+    direction TB
+    B1["Inputs: X, YouTube, chat exports, notes<br/>fake services in tests"]
+    B2["Redaction first<br/>name dictionary, masking, leak scanner"]
+    B3["Local model summaries<br/>one running summary per field"]
+    B4["Tiers x signals<br/>S 3 · A 1.5 · B 1 · P 0.5"]
+    B5["Daily tables + AI Mode pack"]
+    B6["Emoji board<br/>Calendar + Tasks sync"]
+    B1 --> B2 --> B3 --> B4 --> B5 --> B6
+  end
+  subgraph ENG["EDGE EQUALIZER ENGINE · PROTOTYPE PARTS"]
+    direction TB
+    G1["Real E5 + memvid retrieval<br/>synthetic set: vector Hit@1 6/6, Hit@3 6/6<br/>legal-intake B02b"]
+    G2["Package skeleton<br/>guard · embed · store · retrieve · rag · observe<br/>synthetic tests only"]
+    G3["Long-prompt brief prototype<br/>hybrid recall 0.943 vs 0.0 head-cut<br/>fake embedder, 41.6 synthetic pages"]
+  end
+  subgraph EXT["EXTENSION"]
+    direction LR
+    X1["Ontology parser<br/>+ causal links"]
+    X2["Two knobs + presets<br/>calibrated thresholds"]
+    X3["Edge scorer<br/>+ rerank"]
+    X4["LangGraph token diet<br/>+ LangSmith evals"]
+    X5["Wire engine into<br/>Draft to Done"]
+    X6["Real-account runs<br/>X, YouTube, Google"]
+  end
+  B3 -.->|"replace compression step"| X5
+  G1 -.-> X2
+  G2 -.-> X1
+  G3 -.-> X4
+  X1 --> X2 --> X3 --> X4 --> X5
+  B6 -.-> X6
+  classDef strategy fill:#173b3e,stroke:#66cfc8,stroke-width:2px,color:#e6edf6
+  classDef architecture fill:#342a4c,stroke:#b39ae5,stroke-width:2px,color:#e6edf6
+  classDef engineering fill:#18344b,stroke:#5ba7db,stroke-width:2px,color:#e6edf6
+  classDef python fill:#26313d,stroke:#a1afbf,stroke-width:2px,color:#e6edf6
+  classDef guard fill:#263c17,stroke:#91cc45,stroke-width:3px,color:#e6edf6
+  classDef worker fill:#4b2b22,stroke:#d39a6a,stroke-width:3px,color:#e6edf6
+  classDef control fill:#42351e,stroke:#ddb965,stroke-width:2px,color:#e6edf6
+  classDef result fill:#1a2837,stroke:#78d5ef,stroke-width:2px,color:#e6edf6
+  classDef stop fill:#40282d,stroke:#c58b92,stroke-width:2px,color:#e6edf6
+  classDef extension fill:#141f2c,stroke:#8aa0b8,stroke-width:2px,stroke-dasharray:6 4,color:#c9d8eb
+  class B1 python;
+  class B2 guard;
+  class B3 worker;
+  class B4,B5 control;
+  class B6 result;
+  class G1 result;
+  class G2 python;
+  class G3 architecture;
+  class X1,X2,X3,X4,X5,X6 extension;
+  style BUILT fill:#141f2c,stroke:#455f79,stroke-width:1.5px,color:#c9d8eb
+  style ENG fill:#141f2c,stroke:#455f79,stroke-width:1.5px,color:#c9d8eb
+  style EXT fill:#141f2c,stroke:#455f79,stroke-width:1.5px,color:#c9d8eb

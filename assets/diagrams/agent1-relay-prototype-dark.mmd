@@ -1,0 +1,48 @@
+flowchart TB
+  subgraph BUILT["BUILT · OFFLINE TESTS GREEN (465, 2026-10-30, BOTH PRODUCTS)"]
+    direction TB
+    P0["Start plan wizard<br/>remaining %, reset, deadline, margin · N9b-d"]
+    P1["Spec inbox<br/>files, forbid, effort, coder, after · N5-N6"]
+    P2["Pre-run checks<br/>subscription login, clean env, unsafe-spec refusal · N9a-f"]
+    P3["Credit-aware scheduler<br/>parallel lanes, headroom, daytime reserve"]
+    P4["Codex CLI<br/>non-interactive, stdin closed"]
+    P5{"Gates 1-4<br/>commit · remotes · diff guard · test re-run"}
+    P6["outbox + REPORT.md<br/>status page for phone · N7"]
+    P7["One fix round<br/>backup branch, roll back"]
+    P8["No-overage lock<br/>purchase-text kill, hard caps, screen guard"]
+    P0 --> P3
+    P1 --> P2 --> P3 --> P4 --> P5
+    P5 -->|"pass"| P6
+    P5 -->|"fail"| P7
+    P8 -.-> P4
+  end
+  subgraph EXT["EXTENSION"]
+    direction LR
+    E1["N8 Codex ⇄ Claude Code loop<br/>through the risk gateway"]
+    E2["Claude coder<br/>subscription login verified"]
+    E3["Two unattended nights<br/>real accounts"]
+    E4["Agent Risk Gateway<br/>extracted shared module"]
+  end
+  P4 -.-> E1
+  P4 -.-> E2
+  P6 -.-> E3
+  P8 -.-> E4
+  classDef strategy fill:#173b3e,stroke:#66cfc8,stroke-width:2px,color:#e6edf6
+  classDef architecture fill:#342a4c,stroke:#b39ae5,stroke-width:2px,color:#e6edf6
+  classDef engineering fill:#18344b,stroke:#5ba7db,stroke-width:2px,color:#e6edf6
+  classDef python fill:#26313d,stroke:#a1afbf,stroke-width:2px,color:#e6edf6
+  classDef guard fill:#263c17,stroke:#91cc45,stroke-width:3px,color:#e6edf6
+  classDef worker fill:#4b2b22,stroke:#d39a6a,stroke-width:3px,color:#e6edf6
+  classDef control fill:#42351e,stroke:#ddb965,stroke-width:2px,color:#e6edf6
+  classDef result fill:#1a2837,stroke:#78d5ef,stroke-width:2px,color:#e6edf6
+  classDef stop fill:#40282d,stroke:#c58b92,stroke-width:2px,color:#e6edf6
+  classDef extension fill:#141f2c,stroke:#8aa0b8,stroke-width:2px,stroke-dasharray:6 4,color:#c9d8eb
+  class P0,P1 engineering;
+  class P2,P8 guard;
+  class P3,P5 control;
+  class P4 worker;
+  class P6 result;
+  class P7 stop;
+  class E1,E2,E3,E4 extension;
+  style BUILT fill:#141f2c,stroke:#455f79,stroke-width:1.5px,color:#c9d8eb
+  style EXT fill:#141f2c,stroke:#455f79,stroke-width:1.5px,color:#c9d8eb
