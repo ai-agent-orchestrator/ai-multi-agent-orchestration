@@ -92,7 +92,7 @@ Presets combine the two: **research and idea fusion** (spear low, shield high) a
 | --- | --- |
 | Draft to Done pipeline: inputs, redaction, local summaries, tiers, tables, AI Mode pack, board, Calendar and Tasks (offline tests) | Ontology parser with causal links |
 | Real E5 + memvid retrieval on a synthetic set: vector Hit@1 6/6, Hit@3 6/6 ([legal-intake-fastapi-lab](https://github.com/ai-agent-orchestrator/legal-intake-fastapi-lab), B02b) | Two knobs, presets and calibrated thresholds |
-| Engine package skeleton with synthetic tests ([langchain-rag-research-agent](https://github.com/ai-agent-orchestrator/python-memvid-guardrail), renaming from python-memvid-guardrail) | Edge scorer and reranking |
+| Engine package skeleton with synthetic tests ([langchain-rag-research-agent](https://github.com/ai-agent-orchestrator/langchain-rag-research-agent), formerly python-memvid-guardrail) | Edge scorer and reranking |
 | Long-prompt brief prototype: hybrid recall 0.943 vs 0.0 for head truncation, fake embedder on 41.6 synthetic pages | LangGraph token diet and LangSmith edge-recall evaluation |
 | | Engine wired into Draft to Done in place of the compression step; real-account runs |
 
