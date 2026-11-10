@@ -34,9 +34,9 @@ At the current stage, I am especially focused on the Legal/Medical part because 
 
 My backend study is the execution layer for that direction: Java 21, Spring Boot REST APIs, JSON contracts, Virtual Threads, monitoring, observability, and the FastAPI, memvid and guardrail integration described below.
 
-## Two Multi-Agent Systems
+## Three Multi-Agent Systems
 
-Two products run on one PC behind one shared risk and cost layer. **Multi-agent 1 builds code overnight; multi-agent 2 turns reading and long AI-chat drafts into reviewed research without flattening the owner's original ideas.**
+Two products run on one PC behind one shared risk and cost layer. **Multi-agent 1 builds code overnight; multi-agent 2 turns reading and long AI-chat drafts into reviewed research without flattening the owner's original ideas.** Multi-agent 3 is the operating layer above both: it keeps the person in charge of the three roles (CEO · CTO · Coder) and of their week.
 
 [![Two multi-agent products: owner and design loop on top, NightCoder Relay and Draft to Done with the Edge Equalizer in the middle, the shared risk and cost layer underneath](assets/diagrams/multi-agents-overview-dark.png)](assets/diagrams/multi-agents-overview-dark.svg)
 
@@ -96,6 +96,23 @@ Presets combine the two: **research and idea fusion** (spear low, shield high) a
 | Long-prompt brief prototype: hybrid recall 0.943 vs 0.0 for head truncation, fake embedder on 41.6 synthetic pages | LangGraph token diet and LangSmith edge-recall evaluation |
 | | Engine wired into Draft to Done in place of the compression step; real-account runs |
 
+### Multi-agent 3 · CEO-CTO-Coder (Life Organizer + Life Balancer)
+
+Not more agents, but three clear roles, one controlled axis in the middle, and a weekly look back. The **Life Organizer** turns ideas into small tasks, filters research before it reaches a coder, keeps every agent on a checklist and stops loops, overspend and failures. The **Life Balancer** compares, per life area, what the person did and what AI did; AI work counts only after the person approves it.
+
+**Concept design**
+
+[![CEO-CTO-Coder: human CEO, Life Organizer middle axis, CTO and Coder execution, Life Balancer weekly mirror](assets/diagrams/agent3-ceo-cto-coder-concept-dark.png)](assets/diagrams/agent3-ceo-cto-coder-concept-dark.svg)
+
+| Part | Role |
+| --- | --- |
+| CEO · person + Google AI | think, research, decide; approve anything irreversible |
+| Life Organizer | Action Plan (ideas → tasks) · filters (security, cost, equalizer) · Checklist + Alarm |
+| CTO · Claude / Coder · Codex via NightCoder Relay | specs and review / gated, capped overnight implementation (multi-agent 1) |
+| Life Balancer | weekly mirror of human vs AI activity per life area, against the person's own weights |
+
+**Status:** concept design for personal use. Some guard pieces already exist in multi-agent 1 (masking, hard caps, stop file, test gates); the rest is design. Details: [ceo-cto-coder](https://github.com/ai-agent-orchestrator/ceo-cto-coder).
+
 The earlier research-harness flow ([diagram](assets/diagrams/research-harness-flow-dark.svg)) is the intake and review shell that this design keeps.
 
 **Status:** design and development in progress. Both products pass their test suite on the author's Windows PC (465 tests, 2026-10-30); runs against real accounts and services are not yet verified. Details: [nightcoder](https://github.com/ai-agent-orchestrator/nightcoder).
@@ -116,6 +133,7 @@ The foundation below is implemented at demo scope. Everything under "Extension" 
 | Extension | Multi-agent 2 · Edge Equalizer engine | Ontology parsing, keyword + vector search, two knobs, LangGraph token diet, LangSmith evaluation | Design reviewed, prototype parts, [langchain-rag-research-agent](https://github.com/ai-agent-orchestrator/python-memvid-guardrail) |
 | Extension | Multi-agent 1 · NightCoder Relay | Spec inbox, lanes, scheduler, gates, subscription-only coding agents, hard daily caps | In development, [nightcoder](https://github.com/ai-agent-orchestrator/nightcoder) |
 | Extension | Legal intake product | Spring Boot + FastAPI hybrid with memvid memory; commercialization as an extension | In development, [legal-ai-intake-system](https://github.com/ai-agent-orchestrator/legal-ai-intake-system) |
+| Extension | Multi-agent 3 · CEO-CTO-Coder | Life Organizer (Action Plan, filter chain, Checklist + Alarm, exception routing, weekend→weekday context bridge) and Life Balancer (weekly human vs AI review) | Concept design, [ceo-cto-coder](https://github.com/ai-agent-orchestrator/ceo-cto-coder) |
 | Extension | Shared harness core | Extract the common layer (role contracts, safety and cost gates, masking, memory boundary) so new domain modules attach to it | Extension |
 | Extension | Content guardrails | NVIDIA NeMo Guardrails | Extension |
 | Extension | Agent execution security | NVIDIA NemoClaw / OpenShell for supported agent runtimes | Extension |
