@@ -1,0 +1,41 @@
+flowchart LR
+  subgraph HUMAN["HUMAN · CEO"]
+    direction TB
+    H["Person + Google AI<br/>ideas · decisions"]
+  end
+  subgraph AXIS["LIFE ORGANIZER · MIDDLE AXIS"]
+    direction TB
+    P["Action Plan"]
+    F["Filters<br/>security · cost · equalizer"]
+    C["Checklist + Alarm"]
+  end
+  subgraph EXEC["EXECUTION"]
+    direction TB
+    T["CTO · Claude<br/>specs · review"]
+    K["Coder · Night Coder<br/>gated, capped runs"]
+  end
+  subgraph MIRROR["LIFE BALANCER · WEEKLY MIRROR"]
+    direction TB
+    B["Human vs AI activity<br/>per life area"]
+  end
+  HUMAN --> AXIS --> EXEC --> MIRROR
+  P --> F
+  F ~~~ C
+  T --> K
+  MIRROR -. next week .-> HUMAN
+  classDef strategy fill:#173b3e,stroke:#66cfc8,color:#e6edf6
+  classDef arch fill:#342a4c,stroke:#b39ae5,color:#e6edf6
+  classDef eng fill:#18344b,stroke:#5ba7db,color:#e6edf6
+  classDef guard fill:#263c17,stroke:#91cc45,stroke-width:3px,color:#e6edf6
+  classDef res fill:#1a2837,stroke:#78d5ef,color:#e6edf6
+  classDef ctrl fill:#42351e,stroke:#ddb965,color:#e6edf6
+  class H ctrl
+  class P eng
+  class F,C guard
+  class T arch
+  class K eng
+  class B res
+  style HUMAN fill:#141f2c,stroke:#455f79,stroke-width:1.5px,color:#c9d8eb
+  style AXIS fill:#141f2c,stroke:#455f79,stroke-width:1.5px,color:#c9d8eb
+  style EXEC fill:#141f2c,stroke:#455f79,stroke-width:1.5px,color:#c9d8eb
+  style MIRROR fill:#141f2c,stroke:#455f79,stroke-width:1.5px,color:#c9d8eb
