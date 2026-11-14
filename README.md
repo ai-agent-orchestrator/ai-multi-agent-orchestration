@@ -145,7 +145,7 @@ The foundation below is implemented at demo scope. Everything under "Extension" 
 | Extension | Multi-agent 2 · Edge Equalizer engine | Ontology parsing, keyword + vector search, two knobs, LangGraph token diet, LangSmith evaluation | Design reviewed, prototype parts, [langchain-rag-research-agent](https://github.com/ai-agent-orchestrator/python-memvid-guardrail) |
 | Extension | Multi-agent 1 · NightCoder Relay | Spec inbox, lanes, scheduler, gates, subscription-only coding agents, hard daily caps | In development, [nightcoder](https://github.com/ai-agent-orchestrator/nightcoder) |
 | Extension | Legal intake product | Spring Boot + FastAPI hybrid with memvid memory; commercialization as an extension | In development, [legal-ai-intake-system](https://github.com/ai-agent-orchestrator/legal-ai-intake-system) |
-| Extension | Multi-agent 3 · CEO-CTO-Coder | Life Organizer (Action Plan, filter chain, Checklist + Alarm, exception routing, weekend→weekday context bridge) and Life Balancer (weekly human vs AI review) | Concept design, [ceo-cto-coder](https://github.com/ai-agent-orchestrator/ceo-cto-coder) |
+| Extension | Multi-agent 3 · CEO-CTO-Coder | Life Organizer (Action Plan, filter chain, Checklist + Alarm, exception routing, weekend→weekday context bridge) and Life Balancer (weekly human vs AI review) | Concept design, private repository |
 | Extension | Shared harness core | Extract the common layer (role contracts, safety and cost gates, masking, memory boundary) so new domain modules attach to it | Extension |
 | Extension | Content guardrails | NVIDIA NeMo Guardrails | Extension |
 | Extension | Agent execution security | NVIDIA NemoClaw / OpenShell for supported agent runtimes | Extension |
