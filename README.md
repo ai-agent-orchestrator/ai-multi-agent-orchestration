@@ -1,13 +1,14 @@
 # AI Multi-Agent Orchestration
 
+<p align="center"><b>Run three multi-agent systems as one.</b><br>
+The goal is simple: spend less time on mechanical work and more on research, strategic planning, decisions and action, across a wide and deep range of areas. I run these systems on myself first and measure what they change before offering them to anyone else.</p>
+
 [![Three agents that turn together: Researcher, NightCoder, Life Balancer](assets/diagrams/three-gears-dark.png)](assets/diagrams/three-gears-dark.svg)
 
 | Year | Goal |
 | --- | --- |
-| 2026 | Run three multi-agent systems as one: **Researcher** finds and decides, **NightCoder** builds overnight, **Life Organizer + Life Balancer** turn it into daily action. Develop **commercial Legal and Medical AI multi-agent programs** on the same engine. |
+| 2026 | 1. **Researcher** finds and decides, **NightCoder** builds overnight, **Life Organizer + Life Balancer** turn it into daily action.<br>2. Develop **commercial Legal and Medical AI multi-agent programs** on the same engine. |
 | 2027 | Advance and commercialize: deeper domain-specific agents (legal, medical) and function-specific components with improved agents, taken to market. |
-
-The goal is simple: spend less time on mechanical work and more on research, strategic planning, decisions and action, across a wide and deep range of areas. I run these systems on myself first and measure what they change before offering them to anyone else.
 
 | | Agent 1 · Researcher + Edge Equalizer | Agent 2 · NightCoder Relay | Agent 3 · Life Organizer + Life Balancer |
 | --- | --- | --- | --- |
