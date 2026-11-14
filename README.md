@@ -18,6 +18,18 @@ Medical background
 = Legal/Medical AI Technical PM
 ```
 
+## How AI changed the way I work (2026)
+
+*Three multi-agent systems that semi-automate my life, with clear priorities and balance.*
+
+| When | With | What changed |
+| --- | --- | --- |
+| ~6 months ago | Google AI (Gemini, AI Mode) | I started running every important decision (work, health, money, legal) through structured AI research. Judgment got faster and better grounded. |
+| ~3 months ago | Codex | Coding stopped being the bottleneck. I caught up quickly and moved from using AI to designing and building AI backends myself (Spring Boot, FastAPI, LangGraph). |
+| Now | Claude as CTO, Codex as coder | I build my own multi-agent tools and run them daily: NightCoder codes overnight, Draft to Done turns research into action, Life Organizer keeps the week balanced. The same engine powers what I am taking to market: Legal Intake, then Medical. |
+
+The goal is simple: spend less time on mechanical work and more on research, strategic planning, decisions and action, across a wide and deep range of areas. I run these systems on myself first and measure what they change before offering them to anyone else.
+
 ## Market Focus
 
 I am preparing for this market by focusing on the intersection of:
@@ -111,7 +123,7 @@ Not more agents, but three clear roles, one controlled axis in the middle, and a
 | CTO · Claude / Coder · Codex via NightCoder Relay | specs and review / gated, capped overnight implementation (multi-agent 1) |
 | Life Balancer | weekly mirror of human vs AI activity per life area, against the person's own weights |
 
-**Status:** concept design for personal use. Some guard pieces already exist in multi-agent 1 (masking, hard caps, stop file, test gates); the rest is design. Details: [ceo-cto-coder](https://github.com/ai-agent-orchestrator/ceo-cto-coder).
+**Status:** concept design for personal use. Some guard pieces already exist in multi-agent 1 (masking, hard caps, stop file, test gates); the rest is design. Implementation is kept private..
 
 The earlier research-harness flow ([diagram](assets/diagrams/research-harness-flow-dark.svg)) is the intake and review shell that this design keeps.
 
