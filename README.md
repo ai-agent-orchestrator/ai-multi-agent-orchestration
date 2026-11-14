@@ -4,8 +4,18 @@
 
 | Year | Goal |
 | --- | --- |
-| 2026 | Run the three agents as one system: Researcher finds and decides, NightCoder builds, Life Organizer + Life Balancer turn it into daily action and keep the balance. |
-| 2027 | Go deeper: domain-specific agents (legal, medical) or function-specific components, each with improved agents. |
+| 2026 | Run three multi-agent systems as one: **Researcher** finds and decides, **NightCoder** builds overnight, **Life Organizer + Life Balancer** turn it into daily action. Develop **commercial Legal and Medical AI multi-agent programs** on the same engine. |
+| 2027 | Advance and commercialize: deeper domain-specific agents (legal, medical) and function-specific components with improved agents, taken to market. |
+
+The goal is simple: spend less time on mechanical work and more on research, strategic planning, decisions and action, across a wide and deep range of areas. I run these systems on myself first and measure what they change before offering them to anyone else.
+
+| | Agent 1 · Researcher + Edge Equalizer | Agent 2 · NightCoder Relay | Agent 3 · Life Organizer + Life Balancer |
+| --- | --- | --- | --- |
+| Job | turn feeds and long AI-chat drafts into reviewed research and decisions | build code overnight from specs and verify it | turn results into daily and weekly action, keep life areas in balance |
+| Agents | local Llama · Google AI · Claude (verification) | Claude (CTO, specs) · Codex CLI | owner · Google AI · Claude |
+| Core idea | a free local filter first; paid search only on what survives | never trust the coder's report: re-run tests, guard the diff, never push | three clear roles, one checklist, a weekly look back |
+| Human step | approve what leaves the device, decide | review and merge | set priorities, act |
+| Status | pipeline built and offline-tested; engine being rebuilt | in daily use; v2.2 in development | concept design, private |
 
 [![Multi-agent architecture: Google, Claude, Codex, NVIDIA and Meta/Llama](assets/diagrams/orchestration-architecture-dark.png)](assets/diagrams/orchestration-architecture-dark.svg)
 
@@ -25,17 +35,7 @@ Medical background
 = Legal/Medical AI Technical PM
 ```
 
-The goal is simple: spend less time on mechanical work and more on research, strategic planning, decisions and action, across a wide and deep range of areas. I run these systems on myself first and measure what they change before offering them to anyone else.
-
 ## Three Multi-Agent Systems
-
-| | Agent 1 · Researcher + Edge Equalizer | Agent 2 · NightCoder Relay | Agent 3 · Life Organizer + Life Balancer |
-| --- | --- | --- | --- |
-| Job | turn feeds and long AI-chat drafts into reviewed research and decisions | build code overnight from specs and verify it | turn results into daily and weekly action, keep life areas in balance |
-| Agents | local Llama · Google AI · Claude (verification) | Claude (CTO, specs) · Codex CLI | owner · Google AI · Claude |
-| Core idea | a free local filter first; paid search only on what survives | never trust the coder's report: re-run tests, guard the diff, never push | three clear roles, one checklist, a weekly look back |
-| Human step | approve what leaves the device, decide | review and merge | set priorities, act |
-| Status | pipeline built and offline-tested; engine being rebuilt | in daily use; v2.2 in development | concept design, private |
 
 ### Agent 1 · Researcher (Draft to Done + Edge Equalizer)
 
