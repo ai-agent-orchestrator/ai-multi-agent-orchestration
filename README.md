@@ -25,33 +25,7 @@ Medical background
 = Legal/Medical AI Technical PM
 ```
 
-## How AI changed the way I work (2026)
-
-*Three multi-agent systems that semi-automate my life, with clear priorities and balance.*
-
-| When | With | What changed |
-| --- | --- | --- |
-| ~6 months ago | Google AI (Gemini, AI Mode) | I started running every important decision (work, health, money, legal) through structured AI research. Judgment got faster and better grounded. |
-| ~3 months ago | Codex | Coding stopped being the bottleneck. I caught up quickly and moved from using AI to designing and building AI backends myself (Spring Boot, FastAPI, LangGraph). |
-| Now | Claude as CTO, Codex as coder | I build my own multi-agent tools and run them daily: NightCoder codes overnight, Draft to Done turns research into action, Life Organizer keeps the week balanced. The same engine powers what I am taking to market: Legal Intake, then Medical. |
-
 The goal is simple: spend less time on mechanical work and more on research, strategic planning, decisions and action, across a wide and deep range of areas. I run these systems on myself first and measure what they change before offering them to anyone else.
-
-## Market Focus
-
-I am preparing for this market by focusing on the intersection of:
-
-```diff
-Legal / Medical domain knowledge
-+ ontology-driven problem structuring
-+ backend AI server architecture
-+ multi-agent orchestration
-+ safe and observable AI workflows
-```
-
-At the current stage, I am especially focused on the Legal/Medical part because these domains have complex documents, high-risk reasoning, evidence structure, procedural workflows, and strong demand for safer AI systems.
-
-My backend study is the execution layer for that direction: Java 21, Spring Boot REST APIs, JSON contracts, Virtual Threads, monitoring, observability, and the FastAPI, memvid and guardrail integration described below.
 
 ## Three Multi-Agent Systems
 
