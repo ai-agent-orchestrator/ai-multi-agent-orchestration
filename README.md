@@ -3,7 +3,7 @@
 <p align="center"><b>Run three multi-agent systems as one.</b><br>
 The goal is simple: spend less time on mechanical work and more on research, strategic planning, decisions and action, across a wide and deep range of areas. I run these systems on myself first and measure what they change before offering them to anyone else.</p>
 
-[![Three agents that turn together: Researcher, NightCoder, Life Balancer](assets/diagrams/three-gears-dark.png)](assets/diagrams/three-gears-dark.svg)
+[![Three agents that turn together: Multi-Agent Orchestrator, Researcher, NightCoder](assets/diagrams/three-gears-dark.png)](assets/diagrams/three-gears-dark.svg)
 
 | Year | Goal |
 | --- | --- |
